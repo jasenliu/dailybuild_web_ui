@@ -1,0 +1,218 @@
+reg.exe add "HKCU\Software\Intel\Intel Tools\Select Compiler\IDE\6" /v Compiler /t REG_SZ /d 91032 /f
+
+The operation completed successfully
+reg.exe add "HKCU\Software\Intel\Intel Tools\Select Compiler\IDE\6" /v Use_Intel_Cxx /t REG_DWORD /d 00000000 /f
+
+The operation completed successfully
+svn revert -R C:/THC/C0702/PCNest/RSSV/SplitPortfolio
+svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/SplitPortfolio C:/THC/C0702/PCNest/RSSV/SplitPortfolio
+Checked out revision 56758.
+VB6.exe /make C:/THC/C0702/PCNest/RSSV/SplitPortfolio/SplitPortfolio.vbp /out C:/THC/C0702/BuildScript/buildlog/SplitPortfolio.log /outdir C:/THC/C0702/out/
+copy SplitPortfolio.dll to release files folder
+regsvr32.exe C:/THC/C0702/out/SplitPortfolio.dll /s
+svn revert -R C:/THC/C0702/PCNest/RSSV/MappingTool
+localhost - - [26/Apr/2012:16:16:52 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 1169
+http://localhost:4567/index -> /result_detail?log=view_log
+svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/MappingTool C:/THC/C0702/PCNest/RSSV/MappingTool
+Checked out revision 56758.
+VB6.exe /make C:/THC/C0702/PCNest/RSSV/MappingTool/MappingTool.vbp /out C:/THC/C0702/BuildScript/buildlog/MappingTool.log /outdir C:/THC/C0702/out/
+copy MappingTool.dll to release files folder
+regsvr32.exe C:/THC/C0702/out/MappingTool.dll /s
+svn revert -R C:/THC/C0702/PCNest/RSSV/AutoMktdata
+svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AutoMktdata C:/THC/C0702/PCNest/RSSV/AutoMktdata
+Checked out revision 56758.
+msdev.exe C:/THC/C0702/PCNest/RSSV/AutoMktdata/AutoMktdata.dsp /make "AutoMktdata - Win32 Release MinSize" /Rebuild
+Deleting intermediate files and output files for project 'AutoMktdata - Win32 Release MinSize'.
+--------------------Configuration: AutoMktdata - Win32 Release MinSize--------------------
+Creating Type Library...
+Microsoft (R) MIDL Compiler Version 5.01.0164  
+Copyright (c) Microsoft Corp 1991-1997. All rights reserved.
+Processing C:\THC\C0702\PCNest\RSSV\AutoMktdata\AutoMktdata.idl
+AutoMktdata.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oaidl.idl
+oaidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\objidl.idl
+objidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\unknwn.idl
+unknwn.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\wtypes.idl
+wtypes.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\ocidl.idl
+ocidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oleidl.idl
+oleidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\servprov.idl
+servprov.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\urlmon.idl
+urlmon.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\msxml.idl
+msxml.idl
+Compiling resources...
+Compiling...
+AutoMktdata.cpp
+localhost - - [26/Apr/2012:16:16:57 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 3903
+- -> /result_detail?log=view_log
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+Database.cpp
+Database_AMD.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+datehelper.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+dbupdate.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+excel9.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+iniFile.cpp
+localhost - - [26/Apr/2012:16:17:02 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 5012
+- -> /result_detail?log=view_log
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+MktFileReader.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+ReportDate.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+sheetparser.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+sqldb.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+StdAfx.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+localhost - - [26/Apr/2012:16:17:07 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 6265
+- -> /result_detail?log=view_log
+stringhelper.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+TaskObserver.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+XLSReader.cpp
+c:\thc\c0702\pcnest\rssv\automktdata\releaseminsize\MSADO15.tlh(409) : warning C4146: unary minus operator applied to unsigned type, result still unsigned
+Generating Code...
+localhost - - [26/Apr/2012:16:17:12 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 6966
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:17:17 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 6988
+- -> /result_detail?log=view_log
+Linking...
+   Creating library ReleaseMinSize/AutoMktdata.lib and object ReleaseMinSize/AutoMktdata.exp
+Performing registration
+
+AutoMktdata.dll - 0 error(s), 14 warning(s)
+copy AutoMktdata.dll to release files folder
+svn revert -R C:/THC/C0702/PCNest/RSSV/AMDSV
+svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AMDSV C:/THC/C0702/PCNest/RSSV/AMDSV
+Checked out revision 56758.
+msdev.exe C:/THC/C0702/PCNest/RSSV/AMDSV/amdsv.dsp /make "amdsv - Win32 Release" /Rebuild
+Deleting intermediate files and output files for project 'amdsv - Win32 Release'.
+--------------------Configuration: amdsv - Win32 Release--------------------
+Compiling resources...
+Compiling...
+amdsv.cpp
+localhost - - [26/Apr/2012:16:17:22 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 8017
+- -> /result_detail?log=view_log
+Database.cpp
+LoggerRepos.cpp
+localhost - - [26/Apr/2012:16:17:27 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 8110
+- -> /result_detail?log=view_log
+MktdataSv.cpp
+localhost - - [26/Apr/2012:16:17:32 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 8167
+- -> /result_detail?log=view_log
+NTService.cpp
+localhost - - [26/Apr/2012:16:17:37 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 8224
+- -> /result_detail?log=view_log
+StdAfx.cpp
+Linking...
+localhost - - [26/Apr/2012:16:17:42 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 8310
+- -> /result_detail?log=view_log
+
+rssv.exe - 0 error(s), 0 warning(s)
+copy rssv.exe to release files folder
+rssv build finished
+svn revert -R C:/THC/C0702/TCom2/TLogging
+svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TLogging C:/THC/C0702/TCom2/TLogging
+Checked out revision 56758.
+delete the old file TLogging.dll
+BuildConsole "C:/THC/C0702/TCom2/TLogging/TLogging.dsp" /rebuild /OpenMonitor /cfg="Win32 Release MinSize"
+
+-----------------------------------------------------------------
+IncrediBuild Console 3.61.1 (build 1243)
+Copyright (C) 2001-2011 Xoreax Software Ltd. All rights reserved.
+-----------------------------------------------------------------
+
+
+Initializing...
+Deleting intermediate files and output files for project 'TLogging - Win32 Release MinSize'
+--------------------Configuration: TLogging - Win32 Release MinSize------------
+Creating type library...
+Microsoft (R) MIDL Compiler Version 5.01.0164  
+Copyright (c) Microsoft Corp 1991-1997. All rights reserved.
+Processing .\TLogging.idl
+TLogging.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oaidl.idl
+oaidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\objidl.idl
+objidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\unknwn.idl
+unknwn.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\wtypes.idl
+wtypes.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\ocidl.idl
+ocidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\oleidl.idl
+oleidl.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\servprov.idl
+servprov.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\urlmon.idl
+urlmon.idl
+Processing D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\msxml.idl
+msxml.idl
+Compiling resources...
+Compiling...
+StdAfx.cpp
+TLogging.cpp
+LoggingMgr.cpp
+Linking...
+   Creating library .\ReleaseMinSize\TLogging.lib and object .\ReleaseMinSize\TLogging.exp
+Performing registration
+
+TLogging.dll - 0 error(s), 0 warning(s)
+ 
+---------------------- Done ----------------------
+ 
+    Rebuild All: 1 succeeded, 0 failed, 0 skipped
+copy TLogging.dll to release files folder
+overhaha
+localhost - - [26/Apr/2012:16:16:50 China Standard Time] "POST /result HTTP/1.1" 200 0
+http://localhost:4567/index -> /result
+localhost - - [26/Apr/2012:16:17:47 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 11905
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:17:52 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 11927
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:17:57 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 11949
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:02 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 11971
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:07 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 11993
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:12 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12015
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:17 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12037
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:22 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12059
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:27 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12081
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:32 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12103
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:37 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12125
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:42 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12147
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:47 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12169
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:52 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12191
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:18:57 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12213
+- -> /result_detail?log=view_log
+localhost - - [26/Apr/2012:16:19:02 China Standard Time] "GET /result_detail?log=view_log HTTP/1.1" 200 12235
+- -> /result_detail?log=view_log
+
+== Sinatra has ended his set (crowd applauds)
+[2012-04-26 16:22:18] INFO  going to shutdown ...
+[2012-04-26 16:22:18] INFO  WEBrick::HTTPServer#start done.
