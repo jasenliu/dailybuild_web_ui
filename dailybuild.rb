@@ -70,21 +70,12 @@ html_end
 end
 
 post '/result' do
-	#redirect to('/result_detail')
-	#erb result = mail_body
-	#"hello #{params[:tlogging]},#{params[:tzip]}"
-	#log = File.new("logs/sinatra.log", "w")
-	#STDOUT.reopen(log)
-	#STDOUT.sync = true
-	#STDERR.reopen(log)
 	log = File.new("logs/build.log", "w")
 	$stdout = STDOUT
 	$stderr = STDERR
 	$stdout.reopen(log)
 	$stdout.sync = true
 	$stderr.reopen(log)
-	#STDOUT.sync = true
-	#$stderr = tee
 	task_hash = @env["rack.request.form_hash"]
 	task_hash.delete('run')
 	task_hash.delete('mail')
@@ -95,7 +86,6 @@ post '/result' do
 		task.invoke
 	end
 	puts "overhaha"
-	#erb result = mail_body
 	
 end
 
@@ -104,14 +94,8 @@ get '/result_detail' do
 end
 
 configure :development do
-	#log = File.new("logs/sinatra.log", "w")
-	#STDOUT.reopen(log)
-	#STDOUT.sync = true
-	#STDERR.reopen(log)
-  #LOGGER = Logger.new("sinatra.log")
   enable :logging, :dump_errors
   set :raise_errors, true
-	#set :show_exceptions, false
 	set :env, :development
 end
 
@@ -189,42 +173,3 @@ def task_depends(task_hash)
 	end
 	task_hash
 end
-
-=begin
-error do
-  e = request.env['sinatra.error']
-  puts e.to_s
-  puts e.backtrace.join("\n")
-  "Application Error!"
-end
-
-helpers do
-  def logger
-    LOGGER
-  end
-end
-=end
-
-=begin
-configure :development do
-    set :haml, { :ugly=>true }
-    set :clean_trace, true
-
-    Dir.mkdir('logs') unless File.exist?('logs')
-
-    $logger = Logger.new('logs/common.log','daily')
-    $logger.level = Logger::WARN
-		
-		
-
-    # Spit stdout and stderr to a file during development
-    # in case something goes wrong
-    $stdout.reopen("logs/output.log", "w")
-    $stdout.sync = true
-    $stderr.reopen($stdout)
-  end
-
-  configure :production do
-    $logger = Logger.new(STDOUT)
-  end
-=end
