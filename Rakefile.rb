@@ -47,7 +47,8 @@ task :get_latest_thclib do
 		delete_file('C:/THC/C0702/SetupTest/dailybuildFinished.dat')
 	end
 	sh "svn revert -R C:/THC/C0702/ThcLib"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcLib C:/THC/C0702/ThcLib"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcLib C:/THC/C0702/ThcLib"
+	sh "svn update C:/THC/C0702/ThcLib"
 end
 
 #================================TZip config=====================================
@@ -63,7 +64,8 @@ end
 desc "get latest tzip version from svn ..."
 task :get_latest_tzip do
 	sh "svn revert -R C:/THC/C0702/TCom2/TZip"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TZip C:/THC/C0702/TCom2/TZip"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TZip C:/THC/C0702/TCom2/TZip"
+	sh "svn update C:/THC/C0702/TCom2/TZip"
 end
 
 #================================TRDSCrypto config=====================================
@@ -79,7 +81,8 @@ end
 desc "get latest trdscrypto version from svn ..."
 task :get_latest_trdscrypto do
 	sh "svn revert -R C:/THC/C0702/TCom2/TRDSCrypto"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCrypto C:/THC/C0702/TCom2/TRDSCrypto"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCrypto C:/THC/C0702/TCom2/TRDSCrypto"
+	sh "svn update C:/THC/C0702/TCom2/TRDSCrypto"
 end
 
 #================================TCnPool config=====================================
@@ -95,7 +98,8 @@ end
 desc "get latest trdscrypto version from svn ..."
 task :get_latest_tcnpool do
 	sh "svn revert -R C:/THC/C0702/TCom2/TCnPool"
-	sh "svn checkout https://192.168.0.7:8443/svn/Repo/THC/C0702/TCom2/TCnPool C:/THC/C0702/TCom2/TCnPool"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCnPool C:/THC/C0702/TCom2/TCnPool"
+	sh "svn update C:/THC/C0702/TCom2/TCnPool"
 end 
 
 #================================TLogging config=====================================
@@ -114,7 +118,8 @@ end
 desc "get latest tlogging version from svn ..."
 task :get_latest_tlogging do
 	sh "svn revert -R C:/THC/C0702/TCom2/TLogging"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TLogging C:/THC/C0702/TCom2/TLogging"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TLogging C:/THC/C0702/TCom2/TLogging"
+	sh "svn update C:/THC/C0702/TCom2/TLogging"
 end 
 
 #================================TMisc config=====================================
@@ -131,7 +136,8 @@ end
 desc "get latest tmisc version from svn ..."
 task :get_latest_tmisc do
 	sh "svn revert -R C:/THC/C0702/TCom2/TMisc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMisc C:/THC/C0702/TCom2/TMisc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMisc C:/THC/C0702/TCom2/TMisc"
+	sh "svn update C:/THC/C0702/TCom2/TMisc"
 end 
 
 #================================TRDSData config=====================================
@@ -148,7 +154,8 @@ end
 desc "get latest tmisc version from svn ..."
 task :get_latest_trdsdata do
 	sh "svn revert -R C:/THC/C0702/TCom2/TRDSData"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSData C:/THC/C0702/TCom2/TRDSData"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSData C:/THC/C0702/TCom2/TRDSData"
+	sh "svn update C:/THC/C0702/TCom2/TRDSData"
 end
 
 #================================TErrHandler config=====================================
@@ -165,7 +172,8 @@ end
 desc "get latest terrhandler version from svn ..."
 task :get_latest_terrhandler do
 	sh "svn revert -R C:/THC/C0702/TCom2/TErrHandler"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TErrHandler C:/THC/C0702/TCom2/TErrHandler"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TErrHandler C:/THC/C0702/TCom2/TErrHandler"
+	sh "svn update C:/THC/C0702/TCom2/TErrHandler"
 end
 
 #================================TMD config=====================================
@@ -182,7 +190,8 @@ end
 desc "get latest tmd version from svn ..."
 task :get_latest_tmd do
 	sh "svn revert -R C:/THC/C0702/TCom2/TMD"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMD C:/THC/C0702/TCom2/TMD"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMD C:/THC/C0702/TCom2/TMD"
+	sh "svn update C:/THC/C0702/TCom2/TMD"
 end
 
 #================================TASet config=====================================
@@ -199,7 +208,8 @@ end
 desc "get latest taset version from svn ..."
 task :get_latest_taset do
 	sh "svn revert -R C:/THC/C0702/TCom2/TASet"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TASet C:/THC/C0702/TCom2/TASet"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TASet C:/THC/C0702/TCom2/TASet"
+	sh "svn update C:/THC/C0702/TCom2/TASet"
 end
 
 #================================TDCalc config=====================================
@@ -215,7 +225,8 @@ end
 desc "get latest tdcalc version from svn ..."
 task :get_latest_tdcalc do
 	sh "svn revert -R C:/THC/C0702/TCom2/TDCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDCalc C:/THC/C0702/TCom2/TDCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDCalc C:/THC/C0702/TCom2/TDCalc"
+	sh "svn update C:/THC/C0702/TCom2/TDCalc"
 end
 
 #================================TSecurity config=====================================
@@ -232,7 +243,8 @@ end
 desc "get latest tsecurity version from svn ..."
 task :get_latest_tsecurity do
 	sh "svn revert -R C:/THC/C0702/TCom2/TSecurity"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TSecurity C:/THC/C0702/TCom2/TSecurity"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TSecurity C:/THC/C0702/TCom2/TSecurity"
+	sh "svn update C:/THC/C0702/TCom2/TSecurity"
 end
 
 #================================TRefEntity config=====================================
@@ -249,7 +261,8 @@ end
 desc "get latest trefentity version from svn ..."
 task :get_latest_trefentity do
 	sh "svn revert -R C:/THC/C0702/TCom2/TRefEntity"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRefEntity C:/THC/C0702/TCom2/TRefEntity"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRefEntity C:/THC/C0702/TCom2/TRefEntity"
+	sh "svn update C:/THC/C0702/TCom2/TRefEntity"
 end
 
 #================================TExchangeRateMgr config=====================================
@@ -266,7 +279,8 @@ end
 desc "get latest texchangeratemgr version from svn ..."
 task :get_latest_texchangeratemgr do
 	sh "svn revert -R C:/THC/C0702/TCom2/TExchangeRateMgr"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TExchangeRateMgr C:/THC/C0702/TCom2/TExchangeRateMgr"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TExchangeRateMgr C:/THC/C0702/TCom2/TExchangeRateMgr"
+	sh "svn update C:/THC/C0702/TCom2/TExchangeRateMgr"
 end
 
 #================================TStock config=====================================
@@ -283,7 +297,8 @@ end
 desc "get latest tstock version from svn ..."
 task :get_latest_tstock do
 	sh "svn revert -R C:/THC/C0702/TCom2/TStock"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStock C:/THC/C0702/TCom2/TStock"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStock C:/THC/C0702/TCom2/TStock"
+	sh "svn update C:/THC/C0702/TCom2/TStock"
 end
 
 #================================TOption config=====================================
@@ -300,7 +315,8 @@ end
 desc "get latest toption version from svn ..."
 task :get_latest_toption do
 	sh "svn revert -R C:/THC/C0702/TCom2/TOption"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOption C:/THC/C0702/TCom2/TOption"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOption C:/THC/C0702/TCom2/TOption"
+	sh "svn update C:/THC/C0702/TCom2/TOption"
 end
 
 #================================TOTS config=====================================
@@ -317,7 +333,8 @@ end
 desc "get latest tots version from svn ..."
 task :get_latest_tots do
 	sh "svn revert -R C:/THC/C0702/TCom2/TOTS"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOTS C:/THC/C0702/TCom2/TOTS"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOTS C:/THC/C0702/TCom2/TOTS"
+	sh "svn update C:/THC/C0702/TCom2/TOTS"
 end
 
 #================================TBond config=====================================
@@ -334,7 +351,8 @@ end
 desc "get latest tbond version from svn ..."
 task :get_latest_tbond do
 	sh "svn revert -R C:/THC/C0702/TCom2/TBond"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBond C:/THC/C0702/TCom2/TBond"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBond C:/THC/C0702/TCom2/TBond"
+	sh "svn update C:/THC/C0702/TCom2/TBond"
 end
 
 #================================TIRD config=====================================
@@ -351,7 +369,8 @@ end
 desc "get latest tird version from svn ..."
 task :get_latest_tird do
 	sh "svn revert -R C:/THC/C0702/TCom2/TIRD"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIRD C:/THC/C0702/TCom2/TIRD"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIRD C:/THC/C0702/TCom2/TIRD"
+	sh "svn update C:/THC/C0702/TCom2/TIRD"
 end
 
 #================================TCYD config=====================================
@@ -368,7 +387,8 @@ end
 desc "get latest tcyd version from svn ..."
 task :get_latest_tcyd do
 	sh "svn revert -R C:/THC/C0702/TCom2/TCYD"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCYD C:/THC/C0702/TCom2/TCYD"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCYD C:/THC/C0702/TCom2/TCYD"
+	sh "svn update C:/THC/C0702/TCom2/TCYD"
 end
 
 #================================TIntexCMO config=====================================
@@ -396,7 +416,8 @@ end
 desc "get latest tintexcmo version from svn ..."
 task :get_latest_tintexcmo do
 	sh "svn revert -R C:/THC/C0702/TCom2/TIntexCMO"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIntexCMO C:/THC/C0702/TCom2/TIntexCMO"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIntexCMO C:/THC/C0702/TCom2/TIntexCMO"
+	sh "svn update C:/THC/C0702/TCom2/TIntexCMO"
 end
 
 #================================TMarkit config=====================================
@@ -417,7 +438,8 @@ end
 desc "get latest tmarkit version from svn ..."
 task :get_latest_tmarkit do
 	sh "svn revert -R C:/THC/C0702/TCom2/TMarkit"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMarkit C:/THC/C0702/TCom2/TMarkit"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMarkit C:/THC/C0702/TCom2/TMarkit"
+	sh "svn update C:/THC/C0702/TCom2/TMarkit"
 end
 
 #================================TStruProd config=====================================
@@ -445,7 +467,8 @@ end
 desc "get latest tstruprod version from svn ..."
 task :get_latest_tstruprod do
 	sh "svn revert -R C:/THC/C0702/TCom2/TStruProd"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStruProd C:/THC/C0702/TCom2/TStruProd"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStruProd C:/THC/C0702/TCom2/TStruProd"
+	sh "svn update C:/THC/C0702/TCom2/TStruProd"
 end
 
 #================================TCDO config=====================================
@@ -473,7 +496,8 @@ end
 desc "get latest tcdo version from svn ..."
 task :get_latest_tcdo do
 	sh "svn revert -R C:/THC/C0702/TCom2/TCDO"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCDO C:/THC/C0702/TCom2/TCDO"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCDO C:/THC/C0702/TCom2/TCDO"
+	sh "svn update C:/THC/C0702/TCom2/TCDO"
 end
 
 #================================TOptionDeriv config=====================================
@@ -490,7 +514,8 @@ end
 desc "get latest toptionderiv version from svn ..."
 task :get_latest_toptionderiv do
 	sh "svn revert -R C:/THC/C0702/TCom2/TOptionDeriv"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOptionDeriv C:/THC/C0702/TCom2/TOptionDeriv"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOptionDeriv C:/THC/C0702/TCom2/TOptionDeriv"
+	sh "svn update C:/THC/C0702/TCom2/TOptionDeriv"
 end
 
 #================================TDBLoad config=====================================
@@ -507,7 +532,8 @@ end
 desc "get latest tdbload version from svn ..."
 task :get_latest_tdbload do
 	sh "svn revert -R C:/THC/C0702/TCom2/TDBLoad"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDBLoad C:/THC/C0702/TCom2/TDBLoad"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDBLoad C:/THC/C0702/TCom2/TDBLoad"
+	sh "svn update C:/THC/C0702/TCom2/TDBLoad"
 end
 
 #================================IntexCMOClient config=====================================
@@ -519,7 +545,8 @@ end
 desc "get latest intexcmoclient version from svn ..."
 task :get_latest_intexcmoclient do
 	sh "svn revert -R C:/THC/C0702/Misc/IntexCMOClient"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/IntexCMOClient C:/THC/C0702/Misc/IntexCMOClient"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/IntexCMOClient C:/THC/C0702/Misc/IntexCMOClient"
+	sh "svn update C:/THC/C0702/Misc/IntexCMOClient"
 end
 
 #================================TMongoDb config=====================================
@@ -535,7 +562,8 @@ end
 desc "get latest tmongodb version from svn ..."
 task :get_latest_tmongodb do
 	sh "svn revert -R C:/THC/C0702/TCom2/TMongoDb"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMongoDb C:/THC/C0702/TCom2/TMongoDb"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMongoDb C:/THC/C0702/TCom2/TMongoDb"
+	sh "svn update C:/THC/C0702/TCom2/TMongoDb"
 end
 
 #================================TPortfolio config=====================================
@@ -552,7 +580,8 @@ end
 desc "get latest tportfolio version from svn ..."
 task :get_latest_tportfolio do
 	sh "svn revert -R C:/THC/C0702/TCom2/TPortfolio"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPortfolio C:/THC/C0702/TCom2/TPortfolio"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPortfolio C:/THC/C0702/TCom2/TPortfolio"
+	sh "svn update C:/THC/C0702/TCom2/TPortfolio"
 end
 
 #================================TTask config=====================================
@@ -569,7 +598,8 @@ end
 desc "get latest ttask version from svn ..."
 task :get_latest_ttask do
 	sh "svn revert -R C:/THC/C0702/TCom2/TTask"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TTask C:/THC/C0702/TCom2/TTask"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TTask C:/THC/C0702/TCom2/TTask"
+	sh "svn update C:/THC/C0702/TCom2/TTask"
 end
 
 #================================TPathFileAnalyzer config=====================================
@@ -585,7 +615,8 @@ end
 desc "get latest tpathfileanalyzer version from svn ..."
 task :get_latest_tpathfileanalyzer do
 	sh "svn revert -R C:/THC/C0702/TCom2/TPathfileAnalyzer"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileAnalyzer C:/THC/C0702/TCom2/TPathFileAnalyzer"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileAnalyzer C:/THC/C0702/TCom2/TPathFileAnalyzer"
+	sh "svn update C:/THC/C0702/TCom2/TPathFileAnalyzer"
 end
 
 #================================TPathFileParser config=====================================
@@ -608,7 +639,8 @@ end
 desc "get latest tpathfileparser version from svn ..."
 task :get_latest_tpathfileparser do
 	sh "svn revert -R C:/THC/C0702/TCom2/TPathFileParser"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileParser C:/THC/C0702/TCom2/TPathFileParser"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileParser C:/THC/C0702/TCom2/TPathFileParser"
+	sh "svn update C:/THC/C0702/TCom2/TPathFileParser"
 end
 
 #================================TCalc config=====================================
@@ -625,7 +657,8 @@ end
 desc "get latest tcalc version from svn ..."
 task :get_latest_tcalc do
 	sh "svn revert -R C:/THC/C0702/TCom2/TCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCalc C:/THC/C0702/TCom2/TCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCalc C:/THC/C0702/TCom2/TCalc"
+	sh "svn update C:/THC/C0702/TCom2/TCalc"
 end
 
 #================================TPO config=====================================
@@ -642,7 +675,8 @@ end
 desc "get latest tpo version from svn ..."
 task :get_latest_tpo do
 	sh "svn revert -R C:/THC/C0702/TCom2/TPO"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPO C:/THC/C0702/TCom2/TPO"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPO C:/THC/C0702/TCom2/TPO"
+	sh "svn update C:/THC/C0702/TCom2/TPO"
 end
 
 #================================OASCalibrating config=====================================
@@ -659,7 +693,8 @@ end
 desc "get latest oascalibrating version from svn ..."
 task :get_latest_oascalibrating do
 	sh "svn revert -R C:/THC/C0702/PCNest/OASCalibrating"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/OASCalibrating C:/THC/C0702/PCNest/OASCalibrating"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/OASCalibrating C:/THC/C0702/PCNest/OASCalibrating"
+	sh "svn update C:/THC/C0702/PCNest/OASCalibrating"
 end
 
 #================================TRDSIRRCalc config=====================================
@@ -675,7 +710,8 @@ end
 desc "get latest trdsirrcalc version from svn ..."
 task :get_latest_trdsirrcalc do
 	sh "svn revert -R C:/THC/C0702/TCom2/TRDSIRRCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSIRRCalc C:/THC/C0702/TCom2/TRDSIRRCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSIRRCalc C:/THC/C0702/TCom2/TRDSIRRCalc"
+	sh "svn update C:/THC/C0702/TCom2/TRDSIRRCalc"
 end
 
 #================================TRDSCALL config=====================================
@@ -691,7 +727,8 @@ end
 desc "get latest trdscall version from svn ..."
 task :get_latest_trdscall do
 	sh "svn revert -R C:/THC/C0702/TCom2/TRDSCALL"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCALL C:/THC/C0702/TCom2/TRDSCALL"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCALL C:/THC/C0702/TCom2/TRDSCALL"
+	sh "svn update C:/THC/C0702/TCom2/TRDSCALL"
 end
 
 #================================TUserRole config=====================================
@@ -707,7 +744,8 @@ end
 desc "get latest tuserrole version from svn ..."
 task :get_latest_tuserrole do
 	sh "svn revert -R C:/THC/C0702/TCom2/TUserRole"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TUserRole C:/THC/C0702/TCom2/TUserRole"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TUserRole C:/THC/C0702/TCom2/TUserRole"
+	sh "svn update C:/THC/C0702/TCom2/TUserRole"
 end
 
 #================================IRRCalc config=====================================
@@ -736,7 +774,8 @@ end
 desc "get latest irrcalc version from svn ..."
 task :get_latest_irrcalc do
 	sh "svn revert -R C:/THC/C0702/PCNest/IRRCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRCalc C:/THC/C0702/PCNest/IRRCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRCalc C:/THC/C0702/PCNest/IRRCalc"
+	sh "svn update C:/THC/C0702/PCNest/IRRCalc"
 end
 
 #================================CollectOTS config=====================================
@@ -764,7 +803,8 @@ end
 desc "get latest collectots version from svn ..."
 task :get_latest_collectots do
 	sh "svn revert -R C:/THC/C0702/PCNest/COLLECTOTS"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/COLLECTOTS C:/THC/C0702/PCNest/COLLECTOTS"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/COLLECTOTS C:/THC/C0702/PCNest/COLLECTOTS"
+	sh "svn update C:/THC/C0702/PCNest/COLLECTOTS"
 end
 
 #================================IRRSvc config=====================================
@@ -780,7 +820,8 @@ end
 desc "get latest irrsvc version from svn ..."
 task :get_latest_irrsvc do
 	sh "svn revert -R C:/THC/C0702/PCNest/IRRSvc2"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRSvc2 C:/THC/C0702/PCNest/IRRSvc2"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRSvc2 C:/THC/C0702/PCNest/IRRSvc2"
+	sh "svn update C:/THC/C0702/PCNest/IRRSvc2"
 end
 
 #================================ThcGLView config=====================================
@@ -796,7 +837,8 @@ end
 desc "get latest thcglview version from svn ..."
 task :get_latest_thcglview do
 	sh "svn revert -R C:/THC/C0702/TCom2/ThcGLView"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/ThcGLView C:/THC/C0702/TCom2/ThcGLView"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/ThcGLView C:/THC/C0702/TCom2/ThcGLView"
+	sh "svn update C:/THC/C0702/TCom2/ThcGLView"
 end
 
 #=============================ReverseEngineering config===================================
@@ -808,7 +850,8 @@ end
 desc "get latest reverseengineering version from svn ..."
 task :get_latest_reverseengineering do
 	sh "svn revert -R C:/THC/C0702/Misc/Reverseengineering"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/Reverseengineering C:/THC/C0702/Misc/Reverseengineering"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/Reverseengineering C:/THC/C0702/Misc/Reverseengineering"
+	sh "svn update C:/THC/C0702/Misc/Reverseengineering"
 end
 
 #================================TFileDB config=====================================
@@ -825,7 +868,8 @@ end
 desc "get latest tfiledb version from svn ..."
 task :get_latest_tfiledb do
 	sh "svn revert -R C:/THC/C0702/TCom2/TFileDB"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TFileDB C:/THC/C0702/TCom2/TFileDB"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TFileDB C:/THC/C0702/TCom2/TFileDB"
+	sh "svn update C:/THC/C0702/TCom2/TFileDB"
 end
 
 #==================================TNetCmd config=======================================
@@ -845,7 +889,8 @@ end
 desc "get latest tnetcmd version from svn ..."
 task :get_latest_tnetcmd do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TNetCmd"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCmd C:/THC/C0702/CalcOTF/TNetCmd"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCmd C:/THC/C0702/CalcOTF/TNetCmd"
+	sh "svn update C:/THC/C0702/CalcOTF/TNetCmd"
 end
 
 desc "build TNetSvr project ..."
@@ -860,7 +905,8 @@ end
 desc "get latest tnetsvr version from svn ..."
 task :get_latest_tnetsvr do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TNetSvr"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetSvr C:/THC/C0702/CalcOTF/TNetSvr"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetSvr C:/THC/C0702/CalcOTF/TNetSvr"
+	sh "svn update C:/THC/C0702/CalcOTF/TNetSvr"
 end
 
 desc "build TProgress project ..."
@@ -875,7 +921,8 @@ end
 desc "get latest tprogress version from svn ..."
 task :get_latest_tprogress do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TProgress"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TProgress C:/THC/C0702/CalcOTF/TProgress"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TProgress C:/THC/C0702/CalcOTF/TProgress"
+	sh "svn update C:/THC/C0702/CalcOTF/TProgress"
 end
 
 desc "build TMQSvr project ..."
@@ -890,7 +937,8 @@ end
 desc "get latest tmqsvr version from svn ..."
 task :get_latest_tmqsvr do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TMQSvr"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TMQSvr C:/THC/C0702/CalcOTF/TMQSvr"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TMQSvr C:/THC/C0702/CalcOTF/TMQSvr"
+	sh "svn update C:/THC/C0702/CalcOTF/TMQSvr"
 end
 
 desc "build TActiveMQ project ..."
@@ -905,7 +953,8 @@ end
 desc "get latest tactivemq version from svn ..."
 task :get_latest_tactivemq do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TActiveMQ"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TActiveMQ C:/THC/C0702/CalcOTF/TActiveMQ"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TActiveMQ C:/THC/C0702/CalcOTF/TActiveMQ"
+	sh "svn update C:/THC/C0702/CalcOTF/TActiveMQ"
 end
 
 desc "build TNetCalc project ..."
@@ -920,7 +969,8 @@ end
 desc "get latest tnetcalc version from svn ..."
 task :get_latest_tnetcalc do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/TNetCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCalc C:/THC/C0702/CalcOTF/TNetCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCalc C:/THC/C0702/CalcOTF/TNetCalc"
+	sh "svn update C:/THC/C0702/CalcOTF/TNetCalc"
 end
 
 #=============================TClientShell config===================================
@@ -936,7 +986,8 @@ end
 desc "get latest tclientshell version from svn ..."
 task :get_latest_tclientshell do
 	sh "svn revert -R C:/THC/C0702/TCom2/TClientShell"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TClientShell C:/THC/C0702/TCom2/TClientShell"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TClientShell C:/THC/C0702/TCom2/TClientShell"
+	sh "svn update C:/THC/C0702/TCom2/TClientShell"
 end
 
 #================================TBusiness config=====================================
@@ -953,7 +1004,8 @@ end
 desc "get latest tbusiness version from svn ..."
 task :get_latest_tbusiness do
 	sh "svn revert -R C:/THC/C0702/TCom2/TBusiness"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBusiness C:/THC/C0702/TCom2/TBusiness"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBusiness C:/THC/C0702/TCom2/TBusiness"
+	sh "svn update C:/THC/C0702/TCom2/TBusiness"
 end
 
 #=============================TAnalysis config===================================
@@ -969,7 +1021,8 @@ end
 desc "get latest tanalysis version from svn ..."
 task :get_latest_tanalysis do
 	sh "svn revert -R C:/THC/C0702/TCom2/TAnalysis"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TAnalysis C:/THC/C0702/TCom2/TAnalysis"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TAnalysis C:/THC/C0702/TCom2/TAnalysis"
+	sh "svn update C:/THC/C0702/TCom2/TAnalysis"
 end
 
 #=============================TClient config===================================
@@ -983,7 +1036,8 @@ end
 desc "get latest tclient version from svn ..."
 task :get_latest_tclient do
 	sh "svn revert -R C:/THC/C0702/TClient"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TClient C:/THC/C0702/TClient"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TClient C:/THC/C0702/TClient"
+	sh "svn update C:/THC/C0702/TClient"
 end
 
 #=============================CrystalReportCom config===================================
@@ -999,7 +1053,8 @@ end
 desc "get latest crystalreportcom version from svn ..."
 task :get_latest_crystalreportcom do
 	sh "svn revert -R C:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll C:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll C:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
+	sh "svn update C:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
 end
 
 #=============================CrystalReportClient config===================================
@@ -1013,7 +1068,8 @@ end
 desc "get latest crystalreportclient version from svn ..."
 task :get_latest_crystalreportclient do
 	sh "svn revert -R C:/THC/C0702/ThcCrystalReport/ReportWriter/Client"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/Client C:/THC/C0702/ThcCrystalReport/ReportWriter/Client"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/Client C:/THC/C0702/ThcCrystalReport/ReportWriter/Client"
+	sh "svn update C:/THC/C0702/ThcCrystalReport/ReportWriter/Client"
 end
 
 #=============================CreateReport config===================================
@@ -1029,7 +1085,8 @@ end
 desc "get latest createreport version from svn ..."
 task :get_latest_createreport do
 	sh "svn revert -R C:/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll C:/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll C:/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll"
+	sh "svn update C:/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll"
 end
 
 #================================ReportSvc config=====================================
@@ -1045,7 +1102,8 @@ end
 desc "get latest reportsvc version from svn ..."
 task :get_latest_reportsvc do
 	sh "svn revert -R C:/THC/C0702/ThcCrystalReport/ReportService/Service"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/Service C:/THC/C0702/ThcCrystalReport/ReportService/Service"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/Service C:/THC/C0702/ThcCrystalReport/ReportService/Service"
+	sh "svn update C:/THC/C0702/ThcCrystalReport/ReportService/Service"
 end
 
 #================================UpdFunc config=====================================
@@ -1061,7 +1119,8 @@ end
 desc "get latest updfunc version from svn ..."
 task :get_latest_updfunc do
 	sh "svn revert -R C:/THC/C0702/TRDSUpd/UpdFunc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdFunc C:/THC/C0702/TRDSUpd/UpdFunc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdFunc C:/THC/C0702/TRDSUpd/UpdFunc"
+	sh "svn update C:/THC/C0702/TRDSUpd/UpdFunc"
 end
 
 #================================UpdSvc config=====================================
@@ -1077,7 +1136,8 @@ end
 desc "get latest updsvc version from svn ..."
 task :get_latest_updsvc do
 	sh "svn revert -R C:/THC/C0702/TRDSUpd/UpdSvc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdSvc C:/THC/C0702/TRDSUpd/UpdSvc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdSvc C:/THC/C0702/TRDSUpd/UpdSvc"
+	sh "svn update C:/THC/C0702/TRDSUpd/UpdSvc"
 end
 
 #================================tpl_XXX config=====================================
@@ -1098,7 +1158,8 @@ end
 desc "get latest tpl_web version from svn ..."
 task :get_latest_tpl_web do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/plugins/tpl_web"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_web C:/THC/C0702/CalcOTF/plugins/tpl_web"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_web C:/THC/C0702/CalcOTF/plugins/tpl_web"
+	sh "svn update C:/THC/C0702/CalcOTF/plugins/tpl_web"
 end
 
 desc "build tpl_calc project ..."
@@ -1113,7 +1174,8 @@ end
 desc "get latest tpl_calc version from svn ..."
 task :get_latest_tpl_calc do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/plugins/tpl_calc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_calc C:/THC/C0702/CalcOTF/plugins/tpl_calc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_calc C:/THC/C0702/CalcOTF/plugins/tpl_calc"
+	sh "svn update C:/THC/C0702/CalcOTF/plugins/tpl_calc"
 end
 
 desc "build tpl_SingleCalc project ..."
@@ -1128,7 +1190,8 @@ end
 desc "get latest tpl_SingleCalc version from svn ..."
 task :get_latest_tpl_SingleCalc do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/plugins/tpl_SingleCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_SingleCalc C:/THC/C0702/CalcOTF/plugins/tpl_SingleCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_SingleCalc C:/THC/C0702/CalcOTF/plugins/tpl_SingleCalc"
+	sh "svn update C:/THC/C0702/CalcOTF/plugins/tpl_SingleCalc"
 end
 
 desc "build tpl_DistributedCalc project ..."
@@ -1143,7 +1206,8 @@ end
 desc "get latest tpl_DistributedCalc version from svn ..."
 task :get_latest_tpl_DistributedCalc do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc C:/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc C:/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc"
+	sh "svn update C:/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc"
 end
 
 desc "build tpl_optimize project ..."
@@ -1158,7 +1222,8 @@ end
 desc "get latest tpl_optimize version from svn ..."
 task :get_latest_tpl_optimize do
 	sh "svn revert -R C:/THC/C0702/CalcOTF/plugins/tpl_optimize"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_optimize C:/THC/C0702/CalcOTF/plugins/tpl_optimize"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_optimize C:/THC/C0702/CalcOTF/plugins/tpl_optimize"
+	sh "svn update C:/THC/C0702/CalcOTF/plugins/tpl_optimize"
 end
 
 desc "build TGroupCalcItemStr project ..."
@@ -1173,7 +1238,8 @@ end
 desc "get latest TGroupCalcItemStr version from svn ..."
 task :get_latest_tgroupCalcItemStr do
 	sh "svn revert -R C:/THC/C0702/TCom2/TGroupCalcItemStr"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TGroupCalcItemStr C:/THC/C0702/TCom2/TGroupCalcItemStr"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TGroupCalcItemStr C:/THC/C0702/TCom2/TGroupCalcItemStr"
+	sh "svn update C:/THC/C0702/TCom2/TGroupCalcItemStr"
 end
 
 #================================Tcamel config=======================================
@@ -1187,7 +1253,8 @@ end
 desc "get latest tcamel version from svn ..."
 task :get_latest_tcamel do
 	sh "svn revert -R C:/THC/C0702/TCom2/TCamel"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCamel C:/THC/C0702/TCom2/TCamel"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCamel C:/THC/C0702/TCom2/TCamel"
+	sh "svn update C:/THC/C0702/TCom2/TCamel"
 end
 
 #=================================SPDA config=========================================
@@ -1203,7 +1270,8 @@ end
 desc "get latest spda version from svn ..."
 task :get_latest_spda do
 	sh "svn revert -R C:/THC/C0702/Misc/SPDA"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/SPDA C:/THC/C0702/Misc/SPDA"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/SPDA C:/THC/C0702/Misc/SPDA"
+	sh "svn update C:/THC/C0702/Misc/SPDA"
 end
 #================================TNetInfo config=====================================
 desc "build TNetInfo project ..."
@@ -1218,7 +1286,8 @@ end
 desc "get latest tnetinfo version from svn ..."
 task :get_latest_tnetinfo do
 	sh "svn revert -R C:/THC/C0702/TRDSUpd/TNetInfo"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/TNetInfo C:/THC/C0702/TRDSUpd/TNetInfo"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/TNetInfo C:/THC/C0702/TRDSUpd/TNetInfo"
+	sh "svn update C:/THC/C0702/TRDSUpd/TNetInfo"
 end
 
 #================================SysTest config=====================================
@@ -1229,7 +1298,8 @@ end
 desc "get latest systest version from svn ..."
 task :get_latest_systest do
 	sh "svn revert -R C:/THC/C0702/Misc/ThcSysTest"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/ThcSysTest C:/THC/C0702/Misc/ThcSysTest"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/ThcSysTest C:/THC/C0702/Misc/ThcSysTest"
+	sh "svn update C:/THC/C0702/Misc/ThcSysTest"
 end
 
 #================================ClientSetupPackage config=====================================
@@ -1289,7 +1359,8 @@ end
 desc "get latest splitportfolio version from svn ..."
 task :get_latest_splitportfolio do
 	sh "svn revert -R C:/THC/C0702/PCNest/RSSV/SplitPortfolio"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/SplitPortfolio C:/THC/C0702/PCNest/RSSV/SplitPortfolio"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/SplitPortfolio C:/THC/C0702/PCNest/RSSV/SplitPortfolio"
+	sh "svn update C:/THC/C0702/PCNest/RSSV/SplitPortfolio"
 end
 
 desc "build MappingTool project ..."
@@ -1303,7 +1374,8 @@ end
 desc "get latest mappingtool version from svn ..."
 task :get_latest_mappingtool do
 	sh "svn revert -R C:/THC/C0702/PCNest/RSSV/MappingTool"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/MappingTool C:/THC/C0702/PCNest/RSSV/MappingTool"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/MappingTool C:/THC/C0702/PCNest/RSSV/MappingTool"
+	sh "svn update C:/THC/C0702/PCNest/RSSV/MappingTool"
 end
 
 desc "build AutoMktdata project ..."
@@ -1318,7 +1390,8 @@ end
 desc "get latest automktdata version from svn ..."
 task :get_latest_automktdata do
 	sh "svn revert -R C:/THC/C0702/PCNest/RSSV/AutoMktdata"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AutoMktdata C:/THC/C0702/PCNest/RSSV/AutoMktdata"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AutoMktdata C:/THC/C0702/PCNest/RSSV/AutoMktdata"
+	sh "svn update C:/THC/C0702/PCNest/RSSV/AutoMktdata"
 end
 
 desc "build AMDSV project ..."
@@ -1333,7 +1406,8 @@ end
 desc "get latest amdsv version from svn ..."
 task :get_latest_amdsv do
 	sh "svn revert -R C:/THC/C0702/PCNest/RSSV/AMDSV"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AMDSV C:/THC/C0702/PCNest/RSSV/AMDSV"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AMDSV C:/THC/C0702/PCNest/RSSV/AMDSV"
+	sh "svn update C:/THC/C0702/PCNest/RSSV/AMDSV"
 end
 
 #=============================GetWebDev config===================================
@@ -1361,7 +1435,8 @@ end
 desc "get latest tsvcclient version from svn ..."
 task :get_latest_tsvcclient do
 	sh "svn revert -R C:/THC/C0702/E-Series/TSvcClient-vs2005"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/TSvcClient-vs2005 C:/THC/C0702/E-Series/TSvcClient-vs2005"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/TSvcClient-vs2005 C:/THC/C0702/E-Series/TSvcClient-vs2005"
+	sh "svn update C:/THC/C0702/E-Series/TSvcClient-vs2005"
 end
 
 desc "build RTDServer project ..."
@@ -1376,7 +1451,8 @@ end
 desc "get latest rtdserver version from svn ..."
 task :get_latest_rtdserver do
 	sh "svn revert -R C:/THC/C0702/E-Series/RTDServer"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/RTDServer C:/THC/C0702/E-Series/RTDServer"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/RTDServer C:/THC/C0702/E-Series/RTDServer"
+	sh "svn update C:/THC/C0702/E-Series/RTDServer"
 end
 
 desc "build WebService project ..."
@@ -1394,7 +1470,8 @@ end
 desc "get latest webservice version from svn ..."
 task :get_latest_webservice do
 	sh "svn revert -R C:/THC/C0702/W-Series/WebService"
-	sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/W-Series/WebService C:/THC/C0702/W-Series/WebService"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/W-Series/WebService C:/THC/C0702/W-Series/WebService"
+	sh "svn update C:/THC/C0702/W-Series/WebService"
 end
 #================================CopyToProducts config=============================================
 desc "build CopyToProducts project ..."
