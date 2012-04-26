@@ -77,7 +77,7 @@ post '/result' do
 	#STDOUT.reopen(log)
 	#STDOUT.sync = true
 	#STDERR.reopen(log)
-	log = File.new("logs/sinatra.log", "w")
+	log = File.new("logs/build.log", "w")
 	$stdout = STDOUT
 	$stderr = STDERR
 	$stdout.reopen(log)
@@ -123,7 +123,7 @@ after do
 end
 
 def mail_body
-	@output = File.open("logs/sinatra.log").readlines
+	@output = File.open("logs/build.log").readlines
 	html = <<html_end
 	<html>
 		<% if(@output.include?('overhaha'))%>
