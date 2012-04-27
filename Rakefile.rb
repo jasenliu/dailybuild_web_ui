@@ -33,8 +33,8 @@ end
 #================================ThcLib config=================================================
 desc "build thclib project ..."
 task :thclib => [:get_latest_thclib, :setintel] do
-	puts "delete the old file ThcLib-vc6-mt-s-0_3_8.lib ..."
-	delete_file('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	#puts "delete the old file ThcLib-vc6-mt-s-0_3_8.lib ..."
+	#delete_file('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	sh "BuildConsole \"C:/THC/C0702/ThcLib/ThcLib.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
 	Rake::Task[:resetvs6].invoke
 	puts "copy file to lib folder ..."
@@ -71,8 +71,8 @@ end
 #================================TRDSCrypto config=====================================
 desc "build trdscrypto project ..."
 task :trdscrypto => [:get_latest_trdscrypto, :resetvs6] do
-	puts "delete the old file TRDSCrypto.dll ..."
-	delete_file('C:/THC/C0702/out/TRDSCrypto.dll')
+	#puts "delete the old file TRDSCrypto.dll ..."
+	#delete_file('C:/THC/C0702/out/TRDSCrypto.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TRDSCrypto/TRDSCrypto.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TRDSCrypto.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TRDSCrypto.dll', 'C:/THC/C0702/ReleaseFiles/TRDSCrypto.dll')
@@ -88,8 +88,8 @@ end
 #================================TCnPool config=====================================
 desc "build tcnpool project ..."
 task :tcnpool => [:get_latest_tcnpool, :resetvs6] do
-	puts "delete the old file TCnPool.dll"
-	delete_file('C:/THC/C0702/out/TCnPool.dll')
+	#puts "delete the old file TCnPool.dll"
+	#delete_file('C:/THC/C0702/out/TCnPool.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TCnPool/TCnPool.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
 	puts "copy TCnPool.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TCnPool.dll', 'C:/THC/C0702/ReleaseFiles/TCnPool.dll')
@@ -108,8 +108,8 @@ task :tlogging => [:get_latest_tlogging, :resetvs6] do
 	if(!File.exists?('C:/THC/C0702/out/log4cxx.dll'))
 		copy_files('C:/THC/C0702/ReleaseFiles/log4cxx.dll', 'C:/THC/C0702/out/log4cxx.dll')
 	end
-	puts "delete the old file TLogging.dll"
-	delete_file('C:/THC/C0702/out/TLogging.dll')
+	#puts "delete the old file TLogging.dll"
+	#delete_file('C:/THC/C0702/out/TLogging.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TLogging/TLogging.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TLogging.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TLogging.dll', 'C:/THC/C0702/ReleaseFiles/TLogging.dll')
@@ -125,8 +125,8 @@ end
 #================================TMisc config=====================================
 desc "build TMisc project ..."
 task :tmisc => [:get_latest_tmisc, :setintel] do
-	puts "delete the old file TMisc.dll"
-	delete_file('C:/THC/C0702/out/TMisc.dll')
+	#puts "delete the old file TMisc.dll"
+	#delete_file('C:/THC/C0702/out/TMisc.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TMisc/TMisc.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TMisc.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TMisc.dll', 'C:/THC/C0702/ReleaseFiles/TMisc.dll')
@@ -143,8 +143,8 @@ end
 #================================TRDSData config=====================================
 desc "build TRDSData project ..."
 task :trdsdata => [:get_latest_trdsdata, :setintel] do
-	puts "delete the old file TRDSData.dll"
-	delete_file('C:/THC/C0702/out/TRDSData.dll')
+	#puts "delete the old file TRDSData.dll"
+	#delete_file('C:/THC/C0702/out/TRDSData.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TRDSData/TRDSData.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TRDSData.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TRDSData.dll', 'C:/THC/C0702/ReleaseFiles/TRDSData.dll')
@@ -161,8 +161,8 @@ end
 #================================TErrHandler config=====================================
 desc "build TErrHandler project ..."
 task :terrhandler => [:get_latest_terrhandler, :setintel] do
-	puts "delete the old file TErrHandler.dll"
-	delete_file('C:/THC/C0702/out/TErrHandler.dll')
+	#puts "delete the old file TErrHandler.dll"
+	#delete_file('C:/THC/C0702/out/TErrHandler.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TErrHandler/TErrHandler.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TErrHandler.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TErrHandler.dll', 'C:/THC/C0702/ReleaseFiles/TErrHandler.dll')
@@ -179,8 +179,8 @@ end
 #================================TMD config=====================================
 desc "build TMD project ..."
 task :tmd => [:get_latest_tmd, :setintel] do
-	puts "delete the old file TMD.dll"
-	delete_file('C:/THC/C0702/out/TMD.dll')
+	#puts "delete the old file TMD.dll"
+	#delete_file('C:/THC/C0702/out/TMD.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TMD/TMD.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TMD.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TMD.dll', 'C:/THC/C0702/ReleaseFiles/TMD.dll')
@@ -197,8 +197,8 @@ end
 #================================TASet config=====================================
 desc "build TASet project ..."
 task :taset => [:get_latest_taset, :setintel] do
-	puts "delete the old file TASet.dll"
-	delete_file('C:/THC/C0702/out/TASet.dll')
+	#puts "delete the old file TASet.dll"
+	#delete_file('C:/THC/C0702/out/TASet.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TASet/TASet.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TASet.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TASet.dll', 'C:/THC/C0702/ReleaseFiles/TASet.dll')
@@ -215,8 +215,8 @@ end
 #================================TDCalc config=====================================
 desc "build TDCalc project ..."
 task :tdcalc => [:get_latest_tdcalc, :resetvs6] do
-	puts "delete the old file TDCalc.dll"
-	delete_file('C:/THC/C0702/out/TDCalc.dll')
+	#puts "delete the old file TDCalc.dll"
+	#delete_file('C:/THC/C0702/out/TDCalc.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TDCalc/TDCalc.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TDCalc.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TDCalc.dll', 'C:/THC/C0702/ReleaseFiles/TDCalc.dll')
@@ -232,8 +232,8 @@ end
 #================================TSecurity config=====================================
 desc "build TSecurity project ..."
 task :tsecurity => [:get_latest_tsecurity, :setintel] do
-	puts "delete the old file TSecurity.dll"
-	delete_file('C:/THC/C0702/out/TSecurity.dll')
+	#puts "delete the old file TSecurity.dll"
+	#delete_file('C:/THC/C0702/out/TSecurity.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TSecurity/TSecurity.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TSecurity.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TSecurity.dll', 'C:/THC/C0702/ReleaseFiles/TSecurity.dll')
@@ -250,8 +250,8 @@ end
 #================================TRefEntity config=====================================
 desc "build TRefEntity project ..."
 task :trefentity => [:get_latest_trefentity, :setintel] do
-	puts "delete the old file TRefEntity.dll"
-	delete_file('C:/THC/C0702/out/TRefEntity.dll')
+	#puts "delete the old file TRefEntity.dll"
+	#delete_file('C:/THC/C0702/out/TRefEntity.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TRefEntity/TRefEntity.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TRefEntity.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TRefEntity.dll', 'C:/THC/C0702/ReleaseFiles/TRefEntity.dll')
@@ -268,8 +268,8 @@ end
 #================================TExchangeRateMgr config=====================================
 desc "build TExchangeRateMgr project ..."
 task :texchangeratemgr => [:get_latest_texchangeratemgr, :setintel] do
-	puts "delete the old file TExchangeRateMgr.dll"
-	delete_file('C:/THC/C0702/out/TExchangeRateMgr.dll')
+	#puts "delete the old file TExchangeRateMgr.dll"
+	#delete_file('C:/THC/C0702/out/TExchangeRateMgr.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TExchangeRateMgr/TExchangeRateMgr.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TExchangeRateMgr.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TExchangeRateMgr.dll', 'C:/THC/C0702/ReleaseFiles/TExchangeRateMgr.dll')
@@ -286,8 +286,8 @@ end
 #================================TStock config=====================================
 desc "build TStock project ..."
 task :tstock => [:get_latest_tstock, :setintel] do
-	puts "delete the old file TStock.dll"
-	delete_file('C:/THC/C0702/out/TStock.dll')
+	#puts "delete the old file TStock.dll"
+	#delete_file('C:/THC/C0702/out/TStock.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TStock/TStock.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TStock.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TStock.dll', 'C:/THC/C0702/ReleaseFiles/TStock.dll')
@@ -304,8 +304,8 @@ end
 #================================TOption config=====================================
 desc "build TOption project ..."
 task :toption => [:get_latest_toption, :setintel] do
-	puts "delete the old file TOption.dll"
-	delete_file('C:/THC/C0702/out/TOption.dll')
+	#puts "delete the old file TOption.dll"
+	#delete_file('C:/THC/C0702/out/TOption.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TOption/TOption.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TOption.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TOption.dll', 'C:/THC/C0702/ReleaseFiles/TOption.dll')
@@ -322,8 +322,8 @@ end
 #================================TOTS config=====================================
 desc "build TOTS project ..."
 task :tots => [:get_latest_tots, :setintel] do
-	puts "delete the old file TOTS.dll"
-	delete_file('C:/THC/C0702/out/TOTS.dll')
+	#puts "delete the old file TOTS.dll"
+	#delete_file('C:/THC/C0702/out/TOTS.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TOTS/TOTS.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TOTS.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TOTS.dll', 'C:/THC/C0702/ReleaseFiles/TOTS.dll')
@@ -340,8 +340,8 @@ end
 #================================TBond config=====================================
 desc "build TBond project ..."
 task :tbond => [:get_latest_tbond, :setintel] do
-	puts "delete the old file TBond.dll"
-	delete_file('C:/THC/C0702/out/TBond.dll')
+	#puts "delete the old file TBond.dll"
+	#delete_file('C:/THC/C0702/out/TBond.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TBond/TBond.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TBond.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TBond.dll', 'C:/THC/C0702/ReleaseFiles/TBond.dll')
@@ -358,8 +358,8 @@ end
 #================================TIRD config=====================================
 desc "build TIRD project ..."
 task :tird => [:get_latest_tird, :setintel] do
-	puts "delete the old file TIRD.dll"
-	delete_file('C:/THC/C0702/out/TIRD.dll')
+	#puts "delete the old file TIRD.dll"
+	#delete_file('C:/THC/C0702/out/TIRD.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TIRD/TIRD.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TIRD.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TIRD.dll', 'C:/THC/C0702/ReleaseFiles/TIRD.dll')
@@ -376,8 +376,8 @@ end
 #================================TCYD config=====================================
 desc "build TCYD project ..."
 task :tcyd => [:get_latest_tcyd, :setintel] do
-	puts "delete the old file TCYD.dll"
-	delete_file('C:/THC/C0702/out/TCYD.dll')
+	#puts "delete the old file TCYD.dll"
+	#delete_file('C:/THC/C0702/out/TCYD.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TCYD/TCYD.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TCYD.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TCYD.dll', 'C:/THC/C0702/ReleaseFiles/TCYD.dll')
@@ -395,8 +395,8 @@ end
 desc "build TIntexCMO project ..."
 task :tintexcmo => [:get_latest_tintexcmo, :resetvs6, :presvthclib] do |t|
 	Rake::Task[:buildvc6thclib].invoke
-	puts "delete the old file TIntexCMO.dll..."
-	delete_file('C:/THC/C0702/out/TIntexCMO.dll')
+	#puts "delete the old file TIntexCMO.dll..."
+	#delete_file('C:/THC/C0702/out/TIntexCMO.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TIntexCMO/TIntexCMO.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
@@ -423,8 +423,8 @@ end
 #================================TMarkit config=====================================
 desc "build TMarkit project ..."
 task :tmarkit => [:get_latest_tmarkit, :setintel] do
-	puts "delete the old file TMarkit.dll"
-	delete_file('C:/THC/C0702/out/TMarkit.dll')
+	#puts "delete the old file TMarkit.dll"
+	#delete_file('C:/THC/C0702/out/TMarkit.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TMarkit/TMarkit.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	puts "copy TMarkit.dll to release files folder"
 	copy_files('C:/THC/C0702/out/TMarkit.dll', 'C:/THC/C0702/ReleaseFiles/TMarkit.dll')
@@ -446,8 +446,8 @@ end
 desc "build TStruProd project ..."
 task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib] do |t|
 	Rake::Task[:buildvc6thclib].invoke
-	puts "delete the old file TStruProd.dll..."
-	delete_file('C:/THC/C0702/out/TStruProd.dll')
+	#puts "delete the old file TStruProd.dll..."
+	#delete_file('C:/THC/C0702/out/TStruProd.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TStruProd/TStruProd.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
@@ -475,8 +475,8 @@ end
 desc "build TCDO project ..."
 task :tcdo => [:get_latest_tcdo, :resetvs6, :presvthclib] do |t|
 	Rake::Task[:buildvc6thclib].invoke
-	puts "delete the old file TCDO.dll..."
-	delete_file('C:/THC/C0702/out/TCDO.dll')
+	#puts "delete the old file TCDO.dll..."
+	#delete_file('C:/THC/C0702/out/TCDO.dll')
 	sh "BuildConsole \"C:/THC/C0702/TCom2/TCDO/TCDO.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
