@@ -108,9 +108,10 @@ end
 
 def mail_body
 	@output = File.open("logs/build.log").readlines
+	@flag = File.open("logs/build.log").read
 	html = <<html_end
 	<html>
-		<% if(@output.include?('overhaha'))%>
+		<% if(@flag.include?('overhaha')) %>
 			<style>body{background:green}</style>
 		<% else %>
 			<meta http-equiv="Refresh" content="5" />
