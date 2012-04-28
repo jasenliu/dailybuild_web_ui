@@ -34,11 +34,11 @@ end
 desc "build thclib project ..."
 task :thclib => [:get_latest_thclib, :setintel] do
 	#puts "delete the old file ThcLib-vc6-mt-s-0_3_8.lib ..."
-	#delete_file('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	#delete_file('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	sh "BuildConsole \"D:/THC/C0702/ThcLib/ThcLib.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
 	Rake::Task[:resetvs6].invoke
 	puts "copy file to lib folder ..."
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel')
 end
 
 desc "get latest thclib version from svn ..."
@@ -400,7 +400,7 @@ task :tintexcmo => [:get_latest_tintexcmo, :resetvs6, :presvthclib] do |t|
 	sh "BuildConsole \"D:/THC/C0702/TCom2/TIntexCMO/TIntexCMO.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TIntexCMO.dll'))
 		copy_files('D:/THC/C0702/out/TIntexCMO.dll', 'D:/THC/C0702/ReleaseFiles/TIntexCMO.dll')
 		puts "Build D:/THC/C0702/out/TIntexCMO.dll failed in project #{t.name}!"
@@ -451,7 +451,7 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib] do |t|
 	sh "BuildConsole \"D:/THC/C0702/TCom2/TStruProd/TStruProd.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TStruProd.dll'))
 		copy_files('D:/THC/C0702/out/TStruProd.dll', 'D:/THC/C0702/ReleaseFiles/TStruProd.dll')
 		puts "Build D:/THC/C0702/out/TStruProd.dll failed in project #{t.name}!"
@@ -480,7 +480,7 @@ task :tcdo => [:get_latest_tcdo, :resetvs6, :presvthclib] do |t|
 	sh "BuildConsole \"D:/THC/C0702/TCom2/TCDO/TCDO.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TCDO.dll'))
 		copy_files('D:/THC/C0702/out/TCDO.dll', 'D:/THC/C0702/ReleaseFiles/TCDO.dll')
 		puts "Build D:/THC/C0702/out/TCDO.dll failed in project #{t.name}!"
@@ -758,7 +758,7 @@ task :irrcalc => [:get_latest_irrcalc, :resetvs6, :presvthclib] do |t|
 	sh "msdev.exe D:/THC/C0702/PCNest/IRRCalc/IRRCalc.dsp /make \"IRRCalc - Win32 Release\" /Rebuild"
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/IRRCalc.dll'))
 		copy_files('D:/THC/C0702/out/IRRCalc.dll', 'D:/THC/C0702/ReleaseFiles/IRRCalc.dll')
 		puts "Build D:/THC/C0702/out/IRRCalc.dll failed in project #{t.name}!"
@@ -787,7 +787,7 @@ task :collectots => [:get_latest_collectots, :resetvs6, :presvthclib] do |t|
 	sh "BuildConsole \"D:/THC/C0702/PCNest/CollectOTS/CollectOTS.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/CollectOTS.dll'))
 		copy_files('D:/THC/C0702/out/CollectOTS.dll', 'D:/THC/C0702/ReleaseFiles/CollectOTS.dll')
 		puts "Build D:/THC/C0702/out/CollectOTS.dll failed in project #{t.name}!"
@@ -1629,7 +1629,7 @@ task :tintexcmo_with_com32 => [:get_latest_tintexcmo, :resetvs6, :presvthclib, :
 	Rake::Task[:recoverdefine].invoke
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TIntexCMO.dll'))
 		copy_files('D:/THC/C0702/out/TIntexCMO.dll', 'D:/THC/C0702/ReleaseFiles/TIntexCMO.dll')
 		puts "Build D:/THC/C0702/out/TIntexCMO.dll failed in project #{t.name}!"
@@ -1652,7 +1652,7 @@ task :tcdo_with_cmo32 => [:get_latest_tcdo, :resetvs6, :presvthclib, :changedefi
 	Rake::Task[:recoverdefine].invoke
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TCDO.dll'))
 		copy_files('D:/THC/C0702/out/TCDO.dll', 'D:/THC/C0702/ReleaseFiles/TCDO.dll')
 		puts "Build D:/THC/C0702/out/TCDO.dll failed in project #{t.name}!"
@@ -1675,7 +1675,7 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib, :changedefin
 	Rake::Task[:recoverdefine].invoke
 	
 	#recoverthclib
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TStruProd.dll'))
 		copy_files('D:/THC/C0702/out/TStruProd.dll', 'D:/THC/C0702/ReleaseFiles/TStruProd.dll')
 		puts "Build D:/THC/C0702/out/TStruProd.dll failed in project #{t.name}!"
@@ -1705,7 +1705,7 @@ task :presvthclib do
 	if(!is_lib_ms6_up_to_date)
 		sh "D:/THC/C0702/BuildScript/Mov2Intel.bat"
 	else
-		copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+		copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	end
 end
 
@@ -1713,12 +1713,12 @@ task :buildvc6thclib do
 	if(!is_lib_ms6_up_to_date)
 		sh "BuildConsole \"D:/THC/C0702/ThcLib/ThcLib.dsp\" /build /OpenMonitor /cfg=\"Win32 Release\""
 		
-		if(!File.exists?('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')) #build ThcLib Failed
-			copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+		if(!File.exists?('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')) #build ThcLib Failed
+			copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 			Rake::Task[:recoverdefine].invoke
 			#puts "Rebuild MS6 ThcLib failed in project ${project::get-name()}"
 		else                                                      #build ThcLib Success
-			copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6')
+			copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6')
 		end
 	else
 		puts "thclib is up to date, so build omitted ."
@@ -1736,7 +1736,7 @@ task :changedefine do
 end
 
 task :recoverthclib do
-	copy_files('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
+	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TIntexCMO.dll'))
 		copy_files('D:/THC/C0702/out/TIntexCMO.dll', 'D:/THC/C0702/ReleaseFiles/TIntexCMO.dll')
 		puts "Build ${DllFilePath} failed in project ${project::get-name()}!"
@@ -1758,8 +1758,8 @@ def copy_files(from, to)
 end
 	
 def is_lib_ms6_up_to_date
-	lib_ms6_time = File.mtime('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6')
-	lib_intel_time = File.mtime('C:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel')
+	lib_ms6_time = File.mtime('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libMs6')
+	lib_intel_time = File.mtime('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel')
 	lib_ms6_time >= lib_intel_time ? true : false
 end
 
