@@ -116,7 +116,7 @@ def mail_body
 		<% else %>
 			<meta http-equiv="Refresh" content="5" />
 		<% end %>
-		<body>
+		<body onLoad="window.document.body.scrollTop = document.body.scrollHeight; ">
 			<% @output.each do |line| %>
 				<% if line.include?('result_detail?')%>
 					<% next %>
