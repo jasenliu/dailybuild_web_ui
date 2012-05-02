@@ -21,7 +21,6 @@ def send_email(to, subject, html)
 	mail.from = 'DailyBuild@thc.net.cn'
 	mail.subject = subject
 	mail.html = html
-	#mail.attach(file_path)
 	
 	Net::SMTP.start('192.168.0.190') { |smtp|
     smtp.send_message(mail.to_s(), 'DailyBuild@thc.net.cn', to)
