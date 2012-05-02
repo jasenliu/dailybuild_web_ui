@@ -59,9 +59,7 @@ get '/index' do
 			</table><br />
 			MailTo:<input type="text" name="mail" value="jsliu" />@thc.net.cn
 			<input type="submit" name="run" value="run" />
-			</form>
-			<form id="redirect" action="/result_detail">
-				<input type="submit" name="log" value="view_log" />
+			<input type="button" name="view_console" value="view_console" onclick="window.location = '/result_detail'" />
 			</form>
 		</body>
 	</html>
@@ -111,14 +109,15 @@ def mail_body
 	@flag = File.open("logs/build.log").read
 	html = <<html_end
 	<html>
+		<style>body{background:black; color:white;}</style>
 		<% if(@flag.include?('overhaha')) %>
-			<style>body{background:green}</style>
+			<style>body{background:green;}</style>
 		<% else %>
-			<meta http-equiv="Refresh" content="5" />
+			<meta http-equiv="Refresh" content="2" />
 		<% end %>
 		<body onLoad="window.document.body.scrollTop = document.body.scrollHeight; ">
 			<% @output.each do |line| %>
-				<% if line.include?('result_detail?')%>
+				<% if line.include?('result_detail')%>
 					<% next %>
 				<% end %>
 				<%= line %> <br />
