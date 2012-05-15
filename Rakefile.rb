@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'stringio'
+require 'ftools'
 
 =begin
 module Kernel
@@ -42,7 +43,8 @@ task :thclib => [:get_latest_thclib, :setintel] do
 end
 
 desc "get latest thclib version from svn ..."
-task :get_latest_thclib do
+task :get_latest_thclib do |t|
+	t.reenable
 	if(File.exists?('D:/C0702_Release_Tags/C0702_Release/SetupTest/dailybuildFinished.dat'))
 		delete_file('D:/C0702_Release_Tags/C0702_Release/SetupTest/dailybuildFinished.dat')
 	end
@@ -53,7 +55,7 @@ end
 
 #================================TZip config=====================================
 desc "build tzip project ...."
-task :tzip => [:resetvs6] do
+task :tzip => [:get_latest_tzip, :resetvs6] do
 	#puts "delete the old file TZip.dll ..."
 	#delete_file('D:/C0702_Release_Tags/C0702_Release/out/TZip.dll')
 	sh "BuildConsole \"D:/C0702_Release_Tags/C0702_Release/TCom2/TZip/TZip.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
@@ -62,7 +64,8 @@ task :tzip => [:resetvs6] do
 end
 
 desc "get latest tzip version from svn ..."
-task :get_latest_tzip do
+task :get_latest_tzip do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TZip"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TZip D:/C0702_Release_Tags/C0702_Release/TCom2/TZip"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TZip"
@@ -79,7 +82,8 @@ task :trdscrypto => [:get_latest_trdscrypto, :resetvs6] do
 end
 
 desc "get latest trdscrypto version from svn ..."
-task :get_latest_trdscrypto do
+task :get_latest_trdscrypto do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCrypto"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCrypto D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCrypto"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCrypto"
@@ -96,7 +100,8 @@ task :tcnpool => [:get_latest_tcnpool, :resetvs6] do
 end
 
 desc "get latest trdscrypto version from svn ..."
-task :get_latest_tcnpool do
+task :get_latest_tcnpool do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TCnPool"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCnPool D:/C0702_Release_Tags/C0702_Release/TCom2/TCnPool"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TCnPool"
@@ -116,7 +121,8 @@ task :tlogging => [:get_latest_tlogging, :resetvs6] do
 end
 
 desc "get latest tlogging version from svn ..."
-task :get_latest_tlogging do
+task :get_latest_tlogging do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TLogging"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TLogging D:/C0702_Release_Tags/C0702_Release/TCom2/TLogging"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TLogging"
@@ -134,7 +140,8 @@ task :tmisc => [:get_latest_tmisc, :setintel] do
 end
 
 desc "get latest tmisc version from svn ..."
-task :get_latest_tmisc do
+task :get_latest_tmisc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TMisc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMisc D:/C0702_Release_Tags/C0702_Release/TCom2/TMisc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TMisc"
@@ -152,7 +159,8 @@ task :trdsdata => [:get_latest_trdsdata, :setintel] do
 end
 
 desc "get latest tmisc version from svn ..."
-task :get_latest_trdsdata do
+task :get_latest_trdsdata do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSData"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSData D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSData"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSData"
@@ -170,7 +178,8 @@ task :terrhandler => [:get_latest_terrhandler, :setintel] do
 end
 
 desc "get latest terrhandler version from svn ..."
-task :get_latest_terrhandler do
+task :get_latest_terrhandler do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TErrHandler"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TErrHandler D:/C0702_Release_Tags/C0702_Release/TCom2/TErrHandler"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TErrHandler"
@@ -178,7 +187,8 @@ end
 
 #================================TMD config=====================================
 desc "build TMD project ..."
-task :tmd => [:get_latest_tmd, :setintel] do
+task :tmd => [:get_latest_tmd, :setintel] do |t|
+	t.reenable
 	#puts "delete the old file TMD.dll"
 	#delete_file('D:/C0702_Release_Tags/C0702_Release/out/TMD.dll')
 	sh "BuildConsole \"D:/C0702_Release_Tags/C0702_Release/TCom2/TMD/TMD.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
@@ -188,7 +198,8 @@ task :tmd => [:get_latest_tmd, :setintel] do
 end
 
 desc "get latest tmd version from svn ..."
-task :get_latest_tmd do
+task :get_latest_tmd do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TMD"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMD D:/C0702_Release_Tags/C0702_Release/TCom2/TMD"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TMD"
@@ -206,7 +217,8 @@ task :taset => [:get_latest_taset, :setintel] do
 end
 
 desc "get latest taset version from svn ..."
-task :get_latest_taset do
+task :get_latest_taset do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TASet"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TASet D:/C0702_Release_Tags/C0702_Release/TCom2/TASet"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TASet"
@@ -223,7 +235,8 @@ task :tdcalc => [:get_latest_tdcalc, :resetvs6] do
 end
 
 desc "get latest tdcalc version from svn ..."
-task :get_latest_tdcalc do
+task :get_latest_tdcalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TDCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDCalc D:/C0702_Release_Tags/C0702_Release/TCom2/TDCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TDCalc"
@@ -241,7 +254,8 @@ task :tsecurity => [:get_latest_tsecurity, :setintel] do
 end
 
 desc "get latest tsecurity version from svn ..."
-task :get_latest_tsecurity do
+task :get_latest_tsecurity do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TSecurity"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TSecurity D:/C0702_Release_Tags/C0702_Release/TCom2/TSecurity"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TSecurity"
@@ -259,7 +273,8 @@ task :trefentity => [:get_latest_trefentity, :setintel] do
 end
 
 desc "get latest trefentity version from svn ..."
-task :get_latest_trefentity do
+task :get_latest_trefentity do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TRefEntity"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRefEntity D:/C0702_Release_Tags/C0702_Release/TCom2/TRefEntity"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TRefEntity"
@@ -277,7 +292,8 @@ task :texchangeratemgr => [:get_latest_texchangeratemgr, :setintel] do
 end
 
 desc "get latest texchangeratemgr version from svn ..."
-task :get_latest_texchangeratemgr do
+task :get_latest_texchangeratemgr do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TExchangeRateMgr"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TExchangeRateMgr D:/C0702_Release_Tags/C0702_Release/TCom2/TExchangeRateMgr"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TExchangeRateMgr"
@@ -295,7 +311,8 @@ task :tstock => [:get_latest_tstock, :setintel] do
 end
 
 desc "get latest tstock version from svn ..."
-task :get_latest_tstock do
+task :get_latest_tstock do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TStock"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStock D:/C0702_Release_Tags/C0702_Release/TCom2/TStock"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TStock"
@@ -313,7 +330,8 @@ task :toption => [:get_latest_toption, :setintel] do
 end
 
 desc "get latest toption version from svn ..."
-task :get_latest_toption do
+task :get_latest_toption do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TOption"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOption D:/C0702_Release_Tags/C0702_Release/TCom2/TOption"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TOption"
@@ -331,7 +349,8 @@ task :tots => [:get_latest_tots, :setintel] do
 end
 
 desc "get latest tots version from svn ..."
-task :get_latest_tots do
+task :get_latest_tots do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TOTS"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOTS D:/C0702_Release_Tags/C0702_Release/TCom2/TOTS"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TOTS"
@@ -349,7 +368,8 @@ task :tbond => [:get_latest_tbond, :setintel] do
 end
 
 desc "get latest tbond version from svn ..."
-task :get_latest_tbond do
+task :get_latest_tbond do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TBond"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBond D:/C0702_Release_Tags/C0702_Release/TCom2/TBond"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TBond"
@@ -367,7 +387,8 @@ task :tird => [:get_latest_tird, :setintel] do
 end
 
 desc "get latest tird version from svn ..."
-task :get_latest_tird do
+task :get_latest_tird do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TIRD"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIRD D:/C0702_Release_Tags/C0702_Release/TCom2/TIRD"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TIRD"
@@ -385,7 +406,8 @@ task :tcyd => [:get_latest_tcyd, :setintel] do
 end
 
 desc "get latest tcyd version from svn ..."
-task :get_latest_tcyd do
+task :get_latest_tcyd do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TCYD"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCYD D:/C0702_Release_Tags/C0702_Release/TCom2/TCYD"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TCYD"
@@ -414,7 +436,8 @@ task :tintexcmo => [:get_latest_tintexcmo, :resetvs6, :presvthclib] do |t|
 end
 
 desc "get latest tintexcmo version from svn ..."
-task :get_latest_tintexcmo do
+task :get_latest_tintexcmo do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TIntexCMO"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TIntexCMO D:/C0702_Release_Tags/C0702_Release/TCom2/TIntexCMO"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TIntexCMO"
@@ -436,7 +459,8 @@ task :tmarkit => [:get_latest_tmarkit, :setintel] do
 end
 
 desc "get latest tmarkit version from svn ..."
-task :get_latest_tmarkit do
+task :get_latest_tmarkit do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TMarkit"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMarkit D:/C0702_Release_Tags/C0702_Release/TCom2/TMarkit"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TMarkit"
@@ -465,7 +489,8 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib] do |t|
 end
 
 desc "get latest tstruprod version from svn ..."
-task :get_latest_tstruprod do
+task :get_latest_tstruprod do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TStruProd"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TStruProd D:/C0702_Release_Tags/C0702_Release/TCom2/TStruProd"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TStruProd"
@@ -494,7 +519,8 @@ task :tcdo => [:get_latest_tcdo, :resetvs6, :presvthclib] do |t|
 end
 
 desc "get latest tcdo version from svn ..."
-task :get_latest_tcdo do
+task :get_latest_tcdo do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TCDO"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCDO D:/C0702_Release_Tags/C0702_Release/TCom2/TCDO"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TCDO"
@@ -512,7 +538,8 @@ task :toptionderiv => [:get_latest_toptionderiv, :setintel] do
 end
 
 desc "get latest toptionderiv version from svn ..."
-task :get_latest_toptionderiv do
+task :get_latest_toptionderiv do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TOptionDeriv"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TOptionDeriv D:/C0702_Release_Tags/C0702_Release/TCom2/TOptionDeriv"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TOptionDeriv"
@@ -530,7 +557,8 @@ task :tdbload => [:get_latest_tdbload, :setintel] do
 end
 
 desc "get latest tdbload version from svn ..."
-task :get_latest_tdbload do
+task :get_latest_tdbload do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TDBLoad"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TDBLoad D:/C0702_Release_Tags/C0702_Release/TCom2/TDBLoad"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TDBLoad"
@@ -543,7 +571,8 @@ task :intexcmoclient => [:get_latest_intexcmoclient] do
 end
 
 desc "get latest intexcmoclient version from svn ..."
-task :get_latest_intexcmoclient do
+task :get_latest_intexcmoclient do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/Misc/IntexCMOClient"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/IntexCMOClient D:/C0702_Release_Tags/C0702_Release/Misc/IntexCMOClient"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/Misc/IntexCMOClient"
@@ -560,7 +589,8 @@ task :tmongodb => [:get_latest_tmongodb, :resetvs6] do
 end
 
 desc "get latest tmongodb version from svn ..."
-task :get_latest_tmongodb do
+task :get_latest_tmongodb do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TMongoDb"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TMongoDb D:/C0702_Release_Tags/C0702_Release/TCom2/TMongoDb"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TMongoDb"
@@ -578,7 +608,8 @@ task :tportfolio => [:get_latest_tportfolio, :setintel] do
 end
 
 desc "get latest tportfolio version from svn ..."
-task :get_latest_tportfolio do
+task :get_latest_tportfolio do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TPortfolio"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPortfolio D:/C0702_Release_Tags/C0702_Release/TCom2/TPortfolio"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TPortfolio"
@@ -596,10 +627,29 @@ task :ttask => [:get_latest_ttask, :resetvs6] do
 end
 
 desc "get latest ttask version from svn ..."
-task :get_latest_ttask do
+task :get_latest_ttask do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TTask"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TTask D:/C0702_Release_Tags/C0702_Release/TCom2/TTask"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TTask"
+end
+
+#================================TMAP config=====================================
+desc "build TTask project ..."
+task :tmap => [:get_latest_tmap, :resetvs6] do
+	#puts "delete the old file TTask.dll"
+	#delete_file('D:/C0702_Release_Tags/C0702_Release/out/TTask.dll')
+	sh "BuildConsole \"D:/C0702_Release_Tags/C0702_Release/TCom2/TMAP/TMAP.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
+	puts "copy TMAP.dll to release files folder"
+	copy_files('D:/C0702_Release_Tags/C0702_Release/out/TMAP.dll', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/TMAP.dll')
+	Rake::Task[:resetvs6].invoke
+end
+
+desc "get latest tmap version from svn ..."
+task :get_latest_tmap do |t|
+	t.reenable
+	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TMAP"
+	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TMAP"
 end
 
 #================================TPathFileAnalyzer config=====================================
@@ -613,7 +663,8 @@ task :tpathfileanalyzer => [:get_latest_tpathfileanalyzer, :resetvs6] do
 end
 
 desc "get latest tpathfileanalyzer version from svn ..."
-task :get_latest_tpathfileanalyzer do
+task :get_latest_tpathfileanalyzer do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TPathfileAnalyzer"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileAnalyzer D:/C0702_Release_Tags/C0702_Release/TCom2/TPathFileAnalyzer"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TPathFileAnalyzer"
@@ -633,11 +684,12 @@ task :tpathfileparser => [:get_latest_tpathfileparser, :resetvs6] do
 	copy_files('D:/C0702_Release_Tags/C0702_Release/TCom2/TPathfileParser/XML/PathfileHeads.xml', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/PathfileHeads.xml')
 	puts "copy PathFile.xla to release files folder"
 	#copy_files('D:/C0702_Release_Tags/C0702_Release/TCom2/TPathfileParser/XML/PathFile.xla', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/PathFile.xla')
-	sh "xcopy C:\\THC\\C0702\\TCom2\\TPathfileParser\\XML\\PathFile.xla C:\\THC\\C0702\\ReleaseFiles\\ /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\TCom2\\TPathfileParser\\XML\\PathFile.xla D:\\C0702_Release_Tags\\C0702_Release\\ReleaseFiles\\ /H /R /Y"
 end
 
 desc "get latest tpathfileparser version from svn ..."
-task :get_latest_tpathfileparser do
+task :get_latest_tpathfileparser do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TPathFileParser"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPathfileParser D:/C0702_Release_Tags/C0702_Release/TCom2/TPathFileParser"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TPathFileParser"
@@ -655,7 +707,8 @@ task :tcalc => [:get_latest_tcalc, :resetvs6] do
 end
 
 desc "get latest tcalc version from svn ..."
-task :get_latest_tcalc do
+task :get_latest_tcalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCalc D:/C0702_Release_Tags/C0702_Release/TCom2/TCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TCalc"
@@ -673,7 +726,8 @@ task :tpo => [:get_latest_tpo, :setintel] do
 end
 
 desc "get latest tpo version from svn ..."
-task :get_latest_tpo do
+task :get_latest_tpo do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TPO"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TPO D:/C0702_Release_Tags/C0702_Release/TCom2/TPO"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TPO"
@@ -691,7 +745,8 @@ task :oascalibrating => [:get_latest_oascalibrating, :resetvs6] do
 end
 
 desc "get latest oascalibrating version from svn ..."
-task :get_latest_oascalibrating do
+task :get_latest_oascalibrating do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/OASCalibrating"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/OASCalibrating D:/C0702_Release_Tags/C0702_Release/PCNest/OASCalibrating"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/OASCalibrating"
@@ -708,7 +763,8 @@ task :trdsirrcalc => [:get_latest_trdsirrcalc, :resetvs6] do
 end
 
 desc "get latest trdsirrcalc version from svn ..."
-task :get_latest_trdsirrcalc do
+task :get_latest_trdsirrcalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSIRRCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSIRRCalc D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSIRRCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSIRRCalc"
@@ -725,7 +781,8 @@ task :trdscall => [:get_latest_trdscall, :resetvs6] do
 end
 
 desc "get latest trdscall version from svn ..."
-task :get_latest_trdscall do
+task :get_latest_trdscall do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCALL"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TRDSCALL D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCALL"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TRDSCALL"
@@ -742,7 +799,8 @@ task :tuserrole => [:get_latest_tuserrole, :resetvs6] do
 end
 
 desc "get latest tuserrole version from svn ..."
-task :get_latest_tuserrole do
+task :get_latest_tuserrole do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TUserRole"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TUserRole D:/C0702_Release_Tags/C0702_Release/TCom2/TUserRole"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TUserRole"
@@ -772,7 +830,8 @@ task :irrcalc => [:get_latest_irrcalc, :resetvs6, :presvthclib] do |t|
 end
 
 desc "get latest irrcalc version from svn ..."
-task :get_latest_irrcalc do
+task :get_latest_irrcalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/IRRCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRCalc D:/C0702_Release_Tags/C0702_Release/PCNest/IRRCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/IRRCalc"
@@ -801,7 +860,8 @@ task :collectots => [:get_latest_collectots, :resetvs6, :presvthclib] do |t|
 end
 
 desc "get latest collectots version from svn ..."
-task :get_latest_collectots do
+task :get_latest_collectots do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/COLLECTOTS"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/COLLECTOTS D:/C0702_Release_Tags/C0702_Release/PCNest/COLLECTOTS"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/COLLECTOTS"
@@ -818,7 +878,8 @@ task :irrsvc => [:get_latest_irrsvc, :resetvs6] do
 end
 
 desc "get latest irrsvc version from svn ..."
-task :get_latest_irrsvc do
+task :get_latest_irrsvc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/IRRSvc2"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/IRRSvc2 D:/C0702_Release_Tags/C0702_Release/PCNest/IRRSvc2"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/IRRSvc2"
@@ -835,7 +896,8 @@ task :thcglview => [:get_latest_thcglview, :resetvs6] do
 end
 
 desc "get latest thcglview version from svn ..."
-task :get_latest_thcglview do
+task :get_latest_thcglview do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/ThcGLView"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/ThcGLView D:/C0702_Release_Tags/C0702_Release/TCom2/ThcGLView"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/ThcGLView"
@@ -848,7 +910,8 @@ task :reverseengineering => [:get_latest_reverseengineering] do
 end
 
 desc "get latest reverseengineering version from svn ..."
-task :get_latest_reverseengineering do
+task :get_latest_reverseengineering do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/Misc/Reverseengineering"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/Reverseengineering D:/C0702_Release_Tags/C0702_Release/Misc/Reverseengineering"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/Misc/Reverseengineering"
@@ -866,7 +929,8 @@ task :tfiledb => [:get_latest_tfiledb, :resetvs6] do
 end
 
 desc "get latest tfiledb version from svn ..."
-task :get_latest_tfiledb do
+task :get_latest_tfiledb do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TFileDB"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TFileDB D:/C0702_Release_Tags/C0702_Release/TCom2/TFileDB"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TFileDB"
@@ -887,7 +951,8 @@ task :tnetcmd => [:get_latest_tnetcmd] do
 end
 
 desc "get latest tnetcmd version from svn ..."
-task :get_latest_tnetcmd do
+task :get_latest_tnetcmd do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCmd"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCmd D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCmd"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCmd"
@@ -903,7 +968,8 @@ task :tnetsvr => [:get_latest_tnetsvr] do
 end
 
 desc "get latest tnetsvr version from svn ..."
-task :get_latest_tnetsvr do
+task :get_latest_tnetsvr do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetSvr"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetSvr D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetSvr"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetSvr"
@@ -919,7 +985,8 @@ task :tprogress => [:get_latest_tprogress] do
 end
 
 desc "get latest tprogress version from svn ..."
-task :get_latest_tprogress do
+task :get_latest_tprogress do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TProgress"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TProgress D:/C0702_Release_Tags/C0702_Release/CalcOTF/TProgress"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TProgress"
@@ -935,7 +1002,8 @@ task :tmqsvr => [:get_latest_tmqsvr] do
 end
 
 desc "get latest tmqsvr version from svn ..."
-task :get_latest_tmqsvr do
+task :get_latest_tmqsvr do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TMQSvr"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TMQSvr D:/C0702_Release_Tags/C0702_Release/CalcOTF/TMQSvr"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TMQSvr"
@@ -951,7 +1019,8 @@ task :tactivemq => [:get_latest_tactivemq] do
 end
 
 desc "get latest tactivemq version from svn ..."
-task :get_latest_tactivemq do
+task :get_latest_tactivemq do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TActiveMQ"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TActiveMQ D:/C0702_Release_Tags/C0702_Release/CalcOTF/TActiveMQ"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TActiveMQ"
@@ -967,7 +1036,8 @@ task :tnetcalc => [:get_latest_tnetcalc] do
 end
 
 desc "get latest tnetcalc version from svn ..."
-task :get_latest_tnetcalc do
+task :get_latest_tnetcalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/TNetCalc D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/TNetCalc"
@@ -984,7 +1054,8 @@ task :tclientshell => [:get_latest_tclientshell] do
 end
 
 desc "get latest tclientshell version from svn ..."
-task :get_latest_tclientshell do
+task :get_latest_tclientshell do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TClientShell"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TClientShell D:/C0702_Release_Tags/C0702_Release/TCom2/TClientShell"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TClientShell"
@@ -1002,7 +1073,8 @@ task :tbusiness => [:get_latest_tbusiness, :setintel] do
 end
 
 desc "get latest tbusiness version from svn ..."
-task :get_latest_tbusiness do
+task :get_latest_tbusiness do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TBusiness"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TBusiness D:/C0702_Release_Tags/C0702_Release/TCom2/TBusiness"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TBusiness"
@@ -1019,7 +1091,8 @@ task :tanalysis => [:get_latest_tanalysis] do
 end
 
 desc "get latest tanalysis version from svn ..."
-task :get_latest_tanalysis do
+task :get_latest_tanalysis do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TAnalysis"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TAnalysis D:/C0702_Release_Tags/C0702_Release/TCom2/TAnalysis"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TAnalysis"
@@ -1034,7 +1107,8 @@ task :tclient => [:get_latest_tclient] do
 end
 
 desc "get latest tclient version from svn ..."
-task :get_latest_tclient do
+task :get_latest_tclient do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TClient"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TClient D:/C0702_Release_Tags/C0702_Release/TClient"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TClient"
@@ -1051,7 +1125,8 @@ task :crystalreportcom => [:get_latest_crystalreportcom] do
 end
 
 desc "get latest crystalreportcom version from svn ..."
-task :get_latest_crystalreportcom do
+task :get_latest_crystalreportcom do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
@@ -1066,7 +1141,8 @@ task :crystalreportclient => [:get_latest_crystalreportclient] do
 end
 
 desc "get latest crystalreportclient version from svn ..."
-task :get_latest_crystalreportclient do
+task :get_latest_crystalreportclient do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/Client"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/Client D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/Client"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportWriter/Client"
@@ -1083,7 +1159,8 @@ task :createreport => [:get_latest_createreport] do
 end
 
 desc "get latest createreport version from svn ..."
-task :get_latest_createreport do
+task :get_latest_createreport do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/CreateReportDll"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/CreateReportDll D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/CreateReportDll"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/CreateReportDll"
@@ -1100,7 +1177,8 @@ task :reportsvc => [:get_latest_reportsvc, :resetvs6] do
 end
 
 desc "get latest reportsvc version from svn ..."
-task :get_latest_reportsvc do
+task :get_latest_reportsvc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/Service"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportService/Service D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/Service"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/ThcCrystalReport/ReportService/Service"
@@ -1117,7 +1195,8 @@ task :updfunc => [:get_latest_updfunc, :resetvs6] do
 end
 
 desc "get latest updfunc version from svn ..."
-task :get_latest_updfunc do
+task :get_latest_updfunc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdFunc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdFunc D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdFunc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdFunc"
@@ -1134,7 +1213,8 @@ task :updsvc => [:get_latest_updsvc, :resetvs6] do
 end
 
 desc "get latest updsvc version from svn ..."
-task :get_latest_updsvc do
+task :get_latest_updsvc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdSvc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/UpdSvc D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdSvc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TRDSUpd/UpdSvc"
@@ -1156,7 +1236,8 @@ task :tpl_web => [:get_latest_tpl_web] do
 end
 
 desc "get latest tpl_web version from svn ..."
-task :get_latest_tpl_web do
+task :get_latest_tpl_web do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_web"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_web D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_web"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_web"
@@ -1172,7 +1253,8 @@ task :tpl_calc => [:get_latest_tpl_calc] do
 end
 
 desc "get latest tpl_calc version from svn ..."
-task :get_latest_tpl_calc do
+task :get_latest_tpl_calc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_calc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_calc D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_calc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_calc"
@@ -1188,7 +1270,8 @@ task :tpl_SingleCalc => [:get_latest_tpl_SingleCalc] do
 end
 
 desc "get latest tpl_SingleCalc version from svn ..."
-task :get_latest_tpl_SingleCalc do
+task :get_latest_tpl_SingleCalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_SingleCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_SingleCalc D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_SingleCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_SingleCalc"
@@ -1204,7 +1287,8 @@ task :tpl_DistributedCalc => [:get_latest_tpl_DistributedCalc] do
 end
 
 desc "get latest tpl_DistributedCalc version from svn ..."
-task :get_latest_tpl_DistributedCalc do
+task :get_latest_tpl_DistributedCalc do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_DistributedCalc"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_DistributedCalc"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_DistributedCalc"
@@ -1220,7 +1304,8 @@ task :tpl_optimize => [:get_latest_tpl_optimize] do
 end
 
 desc "get latest tpl_optimize version from svn ..."
-task :get_latest_tpl_optimize do
+task :get_latest_tpl_optimize do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_optimize"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_optimize D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_optimize"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/CalcOTF/plugins/tpl_optimize"
@@ -1236,7 +1321,8 @@ task :tgroupCalcItemStr => [:get_latest_tgroupCalcItemStr] do
 end
 
 desc "get latest TGroupCalcItemStr version from svn ..."
-task :get_latest_tgroupCalcItemStr do
+task :get_latest_tgroupCalcItemStr do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TGroupCalcItemStr"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TGroupCalcItemStr D:/C0702_Release_Tags/C0702_Release/TCom2/TGroupCalcItemStr"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TGroupCalcItemStr"
@@ -1251,7 +1337,8 @@ task :tcamel => [:get_latest_tcamel] do
 end
 
 desc "get latest tcamel version from svn ..."
-task :get_latest_tcamel do
+task :get_latest_tcamel do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TCom2/TCamel"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TCom2/TCamel D:/C0702_Release_Tags/C0702_Release/TCom2/TCamel"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TCom2/TCamel"
@@ -1268,7 +1355,8 @@ task :spda => [:get_latest_spda] do
 end
 
 desc "get latest spda version from svn ..."
-task :get_latest_spda do
+task :get_latest_spda do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/Misc/SPDA"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/SPDA D:/C0702_Release_Tags/C0702_Release/Misc/SPDA"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/Misc/SPDA"
@@ -1284,7 +1372,8 @@ task :tnetinfo => [:get_latest_tnetinfo, :resetvs6] do
 end
 
 desc "get latest tnetinfo version from svn ..."
-task :get_latest_tnetinfo do
+task :get_latest_tnetinfo do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/TRDSUpd/TNetInfo"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/TRDSUpd/TNetInfo D:/C0702_Release_Tags/C0702_Release/TRDSUpd/TNetInfo"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/TRDSUpd/TNetInfo"
@@ -1296,7 +1385,8 @@ task :systest => [:get_latest_systest] do
 end
 
 desc "get latest systest version from svn ..."
-task :get_latest_systest do
+task :get_latest_systest do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/Misc/ThcSysTest"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/ThcSysTest D:/C0702_Release_Tags/C0702_Release/Misc/ThcSysTest"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/Misc/ThcSysTest"
@@ -1335,7 +1425,7 @@ task :irrsvcsetuppackage do
 	
 	copy_files('D:/C0702_Release_Tags/C0702_Release/BuildScript/dailybuildNotF.dat', 'D:/C0702_Release_Tags/C0702_Release/SetupPack/SetupTest/dailybuildFinished.dat')
 	copy_files('D:/C0702_Release_Tags/C0702_Release/BuildScript/dailybuildNotF.dat', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/dailybuildFinished.dat')
-	release = "dev"
+	release = "release"
 	if(release == "release")
 		copy_files('D:/C0702_Release_Tags/C0702_Release/BuildScript/dailybuildNotF.dat', 'D:/C0702_Release_Tags/C0702_Release/BuildScript/buildReleaseVersion.dat')
 	end
@@ -1357,7 +1447,8 @@ task :splitportfolio => [:get_latest_splitportfolio] do
 end
 
 desc "get latest splitportfolio version from svn ..."
-task :get_latest_splitportfolio do
+task :get_latest_splitportfolio do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/SplitPortfolio"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/SplitPortfolio D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/SplitPortfolio"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/SplitPortfolio"
@@ -1372,7 +1463,8 @@ task :mappingtool => [:get_latest_mappingtool] do
 end
 
 desc "get latest mappingtool version from svn ..."
-task :get_latest_mappingtool do
+task :get_latest_mappingtool do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/MappingTool"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/MappingTool D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/MappingTool"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/MappingTool"
@@ -1388,7 +1480,8 @@ task :automktdata => [:get_latest_automktdata] do
 end
 
 desc "get latest automktdata version from svn ..."
-task :get_latest_automktdata do
+task :get_latest_automktdata do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AutoMktdata"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AutoMktdata D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AutoMktdata"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AutoMktdata"
@@ -1404,7 +1497,8 @@ task :amdsv => [:get_latest_amdsv] do
 end
 
 desc "get latest amdsv version from svn ..."
-task :get_latest_amdsv do
+task :get_latest_amdsv do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AMDSV"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/PCNest/RSSV/AMDSV D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AMDSV"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/PCNest/RSSV/AMDSV"
@@ -1433,7 +1527,8 @@ task :tsvcclient => [:get_latest_tsvcclient] do
 end
 
 desc "get latest tsvcclient version from svn ..."
-task :get_latest_tsvcclient do
+task :get_latest_tsvcclient do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/E-Series/TSvcClient-vs2005"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/TSvcClient-vs2005 D:/C0702_Release_Tags/C0702_Release/E-Series/TSvcClient-vs2005"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/E-Series/TSvcClient-vs2005"
@@ -1449,7 +1544,8 @@ task :rtdserver => [:get_latest_rtdserver] do
 end
 
 desc "get latest rtdserver version from svn ..."
-task :get_latest_rtdserver do
+task :get_latest_rtdserver do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/E-Series/RTDServer"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/E-Series/RTDServer D:/C0702_Release_Tags/C0702_Release/E-Series/RTDServer"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/E-Series/RTDServer"
@@ -1461,14 +1557,15 @@ task :webservice => [:get_latest_webservice] do
 	#delete_file('D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/WebService')
 	sh "devenv.exe D:/C0702_Release_Tags/C0702_Release/W-Series/WebService/WebService.csproj /Rebuild"
 	puts "copy webservice fill to release files folder"
-	sh "xcopy C:\\THC\\C0702\\W-Series\\WebService\\*.asmx C:\\THC\\C0702\\ReleaseFiles\\WebService\\ /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\W-Series\\WebService\\*.asmx D:\\C0702_Release_Tags\\C0702_Release\\ReleaseFiles\\WebService\\ /H /R /Y"
 	copy_files('D:/C0702_Release_Tags/C0702_Release/W-Series/WebService/web.config', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/WebService/web.config')
 	#copy_files('D:/C0702_Release_Tags/C0702_Release/W-Series/WebService/bin/', 'D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/WebService/bin')
-	sh "xcopy C:\\THC\\C0702\\W-Series\\WebService\\bin\\*.dll C:\\THC\\C0702\\ReleaseFiles\\WebService\\bin\\ /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\W-Series\\WebService\\bin\\*.dll D:\\C0702_Release_Tags\\C0702_Release\\ReleaseFiles\\WebService\\bin\\ /H /R /Y"
 end
 
 desc "get latest webservice version from svn ..."
-task :get_latest_webservice do
+task :get_latest_webservice do |t|
+	t.reenable
 	sh "svn revert -R D:/C0702_Release_Tags/C0702_Release/W-Series/WebService"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/W-Series/WebService D:/C0702_Release_Tags/C0702_Release/W-Series/WebService"
 	sh "svn update D:/C0702_Release_Tags/C0702_Release/W-Series/WebService"
@@ -1480,8 +1577,9 @@ task :copy_to_products => [:dll, :r0702, :trds, :rssv1, :tnetsvr1, :tmqsvr1, :ir
 end
 
 release_path = "D:/C0702_Release_Tags/C0702_Release/ReleaseFiles/"
-task :dll do
-	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll"
+task :dll do |t|
+	t.reenable
+	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tmap.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll"
 	release_dll_arr = release_dlls.split(',')
 	product_Dll_path = "D:/C0702_Release_Tags/C0702_Release/Products/Dll/"
 	release_dll_arr.each do |dll|
@@ -1489,9 +1587,29 @@ task :dll do
 		dest_path = product_Dll_path + dll
 		copy_to_produc(src_path, dest_path, dll)
 	end
+	#file_list = FileList["craxddrt.dll", "craxdrt.dll", "crviewer.dll", "espedcf.esp", "cmosub32.dll", "espmodel.dll", "adppmdl.dll", "flexcell.ocx", "log4cxx.dll", "jmail.dll", "msinet.ocx", "unins.exe","TRDSLicense.dll", "prepayscore.dll", "stsvc.exe", "pathfilerules.xml", "pathfileheads.xml", "pathfile.xla", "ConnStringEditorC0702.exe", "IRRSvcMonitor.exe", "cmo_w32.dll", "tzip.dll", "trdscrypto.dll", "tcnpool.dll","tlogging.dll", "tmisc.dll", "trdsdata.dll", "terrhandler.dll", "tmd.dll", "taset.dll", "tdcalc.dll", "tsecurity.dll", "trefentity.dll", "texchangeratemgr.dll","tstock.dll", "toption.dll", "tots.dll", "tbond.dll", "tird.dll", "tcyd.dll", "tintexcmo.dll", "tmarkit.dll", "tstruprod.dll", "tcdo.dll", "toptionderiv.dll","tdbload.dll", "tmongodb.dll", "tportfolio.dll", "ttask.dll", "tpathfileanalyzer.dll", "tpathfileparser.dll", "tcalc.dll", "tpo.dll", "trdsirrcalc.dll", "trdscall.dll", "tuserrole.dll", "irrcalc.dll", "thcglview.dll", "tfiledb.dll", "tnetcmd.dll", "tactivemq.dll", "tclientshell.dll", "tanalysis.dll", "tbusiness.dll", "tnetinfo.dll", "spda.dll", "tcamel.dll", "tgroupcalcitemstr.dll", "tetldata.dll", "oascalibrating.dll"]
+	#source_dll = FileList["#{release_path}/*.dll", "#{release_path}unins.exe", "#{release_path}stsvc.exe", "#{release_path}ConnStringEditorC0702.exe", "#{release_path}IRRSvcMonitor.exe", "#{release_path}espedcf.esp", "#{release_path}flexcell.ocx", "#{release_path}msinet.ocx", "#{release_path}pathfilerules.xml", "#{release_path}pathfileheads.xml", "#{release_path}pathfile.xla"]
+	#dest_dll = FileList["#{product_Dll_path}/*.dll", "#{product_Dll_path}unins.exe", "#{product_Dll_path}stsvc.exe", "#{product_Dll_path}ConnStringEditorC0702.exe", "#{product_Dll_path}IRRSvcMonitor.exe", "#{product_Dll_path}espedcf.esp", "#{product_Dll_path}flexcell.ocx", "#{product_Dll_path}msinet.ocx", "#{product_Dll_path}pathfilerules.xml", "#{product_Dll_path}pathfileheads.xml", "#{product_Dll_path}pathfile.xla"]
+	#source_dll.each do |dll|
+		#base = File.basename(dll)
+		#dest = product_Dll_path + base
+		#puts dll
+		#file dest => dll do
+			#cp dll, dest, :verbose => true
+		#end
+	#end
+	#file_list.each do |dll|
+		#src_path = release_path + dll
+		#dest_path = product_Dll_path + dll
+		#file "#{dest_path}" => "#{src_path}" do
+			#cp src_path, dest_path, :verbose => true
+		#end
+	#end
+	
 end
 
-task :r0702 do
+task :r0702 do |t|
+	t.reenable
 	files = "createreport.dll,rptsvc.exe,thccrystalreport.exe,thccrystalreports.dll,tpl_optimize.dll,report setting.xml"
 	release_R0702_arr = files.split(',')
 	product_R0702_path = "D:/C0702_Release_Tags/C0702_Release/Products/R0702/"
@@ -1502,7 +1620,8 @@ task :r0702 do
 	end
 end
 
-task :trds do
+task :trds do |t|
+	t.reenable
 	files = "cdo.exe,intexcmo.exe,oas.exe,otshelp.chm,pub.dat,thc.exe,thc_en.chm,thcclient.mdb,thcdatatransfer.exe,thcres.mdb,tranchestool.exe,MDOperator.dll"
 	release_TRDS_arr = files.split(',')
 	product_TRDS_path = "D:/C0702_Release_Tags/C0702_Release/Products/TRDS/"
@@ -1513,7 +1632,8 @@ task :trds do
 	end
 end
 
-task :rssv1 do
+task :rssv1 do |t|
+	t.reenable
 	files = "rssv.exe,automktdata.dll,mappingtool.dll,splitportfolio.dll,log4cxx.dll"
 	release_RSSV_arr = files.split(',')
 	product_RSSV_path = "D:/C0702_Release_Tags/C0702_Release/Products/RSSV/"
@@ -1524,7 +1644,8 @@ task :rssv1 do
 	end
 end
 
-task :tnetsvr1 do
+task :tnetsvr1 do |t|
+	t.reenable
 	files = "tnetcalc.exe,tnetsvr.exe,tprogress.dll,log4cxx.dll,log4cxxr.dll"
 	release_TNetSvr_arr = files.split(',')
 	product_TNetSvr_path = "D:/C0702_Release_Tags/C0702_Release/Products/TNetSvr/"
@@ -1534,10 +1655,11 @@ task :tnetsvr1 do
 		copy_to_produc(src_path, dest_path, file)
 	end
 
-	sh "xcopy C:\\THC\\C0702\\ReleaseFiles\\Plugins\\*.dll C:\\THC\\C0702\\Products\\TNetSvr\\plugins\\ /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\ReleaseFiles\\Plugins\\*.dll D:\\C0702_Release_Tags\\C0702_Release\\Products\\TNetSvr\\plugins\\ /H /R /Y /D"
 end
 
-task :tmqsvr1 do
+task :tmqsvr1 do |t|
+	t.reenable
 	files = "tmqsvr.exe,mqviewer.exe,log4cxx.dll"
 	release_TMQSvr_arr = files.split(',')
 	product_TMQSvr_path = "D:/C0702_Release_Tags/C0702_Release/Products/TMQSvr/"
@@ -1548,7 +1670,8 @@ task :tmqsvr1 do
 	end
 end
 
-task :irrsvc1 do
+task :irrsvc1 do |t|
+	t.reenable
 	files = "irrsvc.exe,collectots.dll,log4cxx.dll"
 	release_IRRSvc_arr = files.split(',')
 	product_IRRSvc_path = "D:/C0702_Release_Tags/C0702_Release/Products/IRRSvc/"
@@ -1559,7 +1682,8 @@ task :irrsvc1 do
 	end
 end
 
-task :updsvc1 do
+task :updsvc1 do |t|
+	t.reenable
 	files = "updfunc.dll,updsvc.exe"
 	release_UpdSvc_arr = files.split(',')
 	product_UpdSvc_path = "D:/C0702_Release_Tags/C0702_Release/Products/UpdSvc/"
@@ -1570,11 +1694,12 @@ task :updsvc1 do
 	end
 end
 
-task :w0702 do
-	product_W0702_path = "C:\\THC\\C0702\\Products\\W0702\\"
+task :w0702 do |t|
+	t.reenable
+	product_W0702_path = "D:\\C0702_Release_Tags\\C0702_Release\\Products\\W0702\\"
 	src_w0702 = "D:\\w0702-dev"
 	date = Time.now.strftime("%Y%m%d")
-	release = "dev"
+	release = "release"
 	if(release == "release")
 		src_w0702 = "D:\\w0702-dev_release"
 	end
@@ -1586,32 +1711,33 @@ task :w0702 do
 		src_w0702 = "#{src_w0702}\\project"
 	end
 	
-	sh "xcopy #{src_w0702} #{product_W0702_path} /H /R /Y /E"
+	sh "xcopy #{src_w0702} #{product_W0702_path} /H /R /Y /E /D"
 
 	puts "copy webservice fill to W0702 folder"
-	sh "xcopy C:\\THC\\C0702\\W-Series\\WebService\\*.asmx #{product_W0702_path} /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\W-Series\\WebService\\*.asmx #{product_W0702_path} /H /R /Y /E /D"
 	#copy_files('D:/C0702_Release_Tags/C0702_Release/W-Series/WebService/web.config', 'D:/C0702_Release_Tags/C0702_Release/Products/W0702/')
-	sh "xcopy C:\\THC\\C0702\\W-Series\\WebService\\bin\\*.dll #{product_W0702_path}\\bin\\ /H /R /Y"
+	sh "xcopy D:\\C0702_Release_Tags\\C0702_Release\\W-Series\\WebService\\bin\\*.dll #{product_W0702_path}\\bin\\ /H /R /Y /D"
 end
 
 #================================CopyToPcnest======================================================
 desc "copy products file to pcnest"
 task :copy_to_pcnest do
-	pcnest_path = "\\\\192.168.0.167\\thc\\Back20070704\\FileList\\WebDev"
-	src_path = "C:\\THC\\C0702\\Products"
+	pcnest_path = "\\\\192.168.0.4\\thc\\Back20070704\\FileList\\WebDev"
+	src_path = "D:\\C0702_Release_Tags\\C0702_Release\\Products"
 	
 	#copy_files("C:\\THC\\C0702\\Products\\R0702\\rptsvc.exe", "\\\\192.168.0.167\\thc\\Back20070704\\FileList\\WebDev\\")
 	
-	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\dll\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\TMQSvr\\*.* #{pcnest_path}\\TMQSvr\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\TNetSvr\\*.* #{pcnest_path}\\TNetSvr\\plugins\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\TNetSvr\\plugins\\*.* #{pcnest_path}\\TNetSvr\\\\plugins\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\TRDS\\*.* #{pcnest_path}\\TRDS\\ /H /R /Y /E"
-	#sh "xcopy #{src_path}\\UpdSvc\\*.* #{pcnest_path}\\UpdSvc\\ /H /R /Y /E"
+	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\test\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\TMQSvr\\*.* #{pcnest_path}\\TMQSvr\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\TNetSvr\\*.* #{pcnest_path}\\TNetSvr\\plugins\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\TNetSvr\\plugins\\*.* #{pcnest_path}\\TNetSvr\\\\plugins\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\TRDS\\*.* #{pcnest_path}\\TRDS\\ /H /R /Y /E /D"
+	#sh "xcopy #{src_path}\\UpdSvc\\*.* #{pcnest_path}\\UpdSvc\\ /H /R /Y /E /D"
 	#sh "xcopy #{src_path}\\W0702 #{pcnest_path}\\W0702\\ /H /R /Y /E"
+	puts "copy to pcnest finished!"
 end
 
 #================================buildFiles_With_cmo322 config=====================================
@@ -1753,8 +1879,8 @@ end
 
 def copy_files(from, to)
 	#File.syscopy(from, to)
-	#File.cp(from, to, true)
-	FileUtils.cp(from, to)
+	File.cp(from, to, true)
+	#FileUtils.cp(from, to)
 end
 	
 def is_lib_ms6_up_to_date
@@ -1766,7 +1892,7 @@ end
 def copy_to_produc(src_path, dest_path, file)
 	if(File.exists?(src_path))
 		if(File.exists?(dest_path))
-			if(File.mtime(src_path) != File.mtime(dest_path))
+			if(File.stat(src_path).mtime > File.stat(dest_path).mtime)
 				copy_files(src_path, dest_path)
 			end
 		else
@@ -1775,4 +1901,8 @@ def copy_to_produc(src_path, dest_path, file)
 	else
 		puts "file #{file} not found!"
 	end
+end
+
+def is_newer(source, target)
+    File.stat(source).mtime > File.stat(target).mtime
 end
