@@ -13,7 +13,7 @@ def get_checkbox_item
 end
 
 get '/index' do
-	@task_arr = get_checkbox_item
+	@task_arr = get_checkbox_item.sort
 	erb html = <<html_end
 	<html>
 		<body>
@@ -83,7 +83,15 @@ post '/result' do
 		task.reenable
 		task.invoke
 	end
+	task = Rake::Task['copy_to_products']
+	task.reenable
+	task.invoke
+	task = Rake::Task['copy_to_pcnest']
+	task.reenable
+	task.invoke
+	p task_hash
 	puts "overhaha"
+	#redirect '/result_detail'
 	
 end
 
@@ -145,9 +153,9 @@ def send_result()
 	erb = ERB.new(content)
 	if(error != nil)
 		puts "the error is:" + error
-		send_email(mail, 'build failed', erb.result(binding))
+		send_email(mail, 'THC C0702_Release Develop Version Build Failure', erb.result(binding))
 	else
-		send_email(mail, 'build success', erb.result(binding))
+		send_email(mail, 'THC C0702_Release Develop Version Build Success', erb.result(binding))
 	end
 end
 
@@ -169,7 +177,15 @@ def task_depends(task_hash)
 	end
 	
 	if(!task_hash.has_key?('RSSV'))
-		task_hash.store('RSSV', 'RSSV')
+		#task_hash.store('RSSV', 'RSSV')
+	end
+	
+	if(!task_hash.has_key?('copy_to_products'))
+		#task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
+	end
+	
+	if(!task_hash.has_key?('copy_to_pcnest'))
+		#task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
 	end
 	task_hash
 end
