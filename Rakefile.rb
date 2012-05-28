@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'stringio'
 require 'ftools'
+require 'net/ssh'
 
 =begin
 module Kernel
@@ -16,8 +17,27 @@ end
 =end
 #================================Default config=====================================
 #bak = :increaseversion,:updateversion,
-task :default => [:thclib,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:copy_to_products,:copy_to_pcnest,:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
+task :default => [:precondition,:increaseversion,:updateversion,:thclib,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:copy_to_products,:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
 	puts "daily build finished"
+end
+
+#================================Precondition config=================================================
+task :precondition do
+	sh "svn revert -R D:/THC/C0702/W-Series"
+	sh "svn update D:/THC/C0702/W-Series"
+	
+	sh "svn revert -R D:/THC/C0702/E-Series"
+	sh "svn update D:/THC/C0702/E-Series"
+	
+	sh "svn revert -R D:/THC/C0702/ReleaseFiles"
+	sh "svn update D:/THC/C0702/ReleaseFiles"
+	
+	sh "svn revert -R D:/THC/C0702/DatabaseScript"
+	sh "svn update D:/THC/C0702/DatabaseScript"
+	
+	sh "svn revert -R D:/THC/C0702/out/MDOperator.dll"
+	sh "svn update D:/THC/C0702/out/MDOperator.dll"	
+	copy_files('D:/THC/C0702/out/MDOperator.dll', 'D:/THC/C0702/ReleaseFiles/MDOperator.dll')
 end
 
 #================================IncreaseVersion config=====================================
@@ -29,6 +49,7 @@ end
 
 #================================UpdateVersion config==========================================
 task :updateversion do
+	sh "svn update D:/THC/C0702/TCom2/contrib"
 	sh "svn commit D:/THC/C0702/TCom2/contrib/VersionNo.h -m \"update C0702 version control file\""
 end
 #================================ThcLib config=================================================
@@ -1507,7 +1528,7 @@ end
 #=============================GetWebDev config===================================
 desc "get web dev"
 task :getwebdev do
-	sh "C:/THC/DailyWeb/daily.bat"
+	sh "D:/THC/DailyWeb/daily.bat"
 end
 
 #=============================TSvc4ESeries config===================================
@@ -1728,14 +1749,14 @@ task :copy_to_pcnest do
 	#copy_files("C:\\THC\\C0702\\Products\\R0702\\rptsvc.exe", "\\\\192.168.0.167\\thc\\Back20070704\\FileList\\WebDev\\")
 	
 	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\test\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\TMQSvr\\*.* #{pcnest_path}\\TMQSvr\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\TNetSvr\\*.* #{pcnest_path}\\TNetSvr\\plugins\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\TNetSvr\\plugins\\*.* #{pcnest_path}\\TNetSvr\\\\plugins\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\TRDS\\*.* #{pcnest_path}\\TRDS\\ /H /R /Y /E /D"
-	#sh "xcopy #{src_path}\\UpdSvc\\*.* #{pcnest_path}\\UpdSvc\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\TMQSvr\\*.* #{pcnest_path}\\TMQSvr\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\TNetSvr\\*.* #{pcnest_path}\\TNetSvr\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\TNetSvr\\plugins\\*.* #{pcnest_path}\\TNetSvr\\\\plugins\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\TRDS\\*.* #{pcnest_path}\\TRDS\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\UpdSvc\\*.* #{pcnest_path}\\UpdSvc\\ /H /R /Y /E /D"
 	#sh "xcopy #{src_path}\\W0702 #{pcnest_path}\\W0702\\ /H /R /Y /E"
 	puts "copy to pcnest finished!"
 end
@@ -1814,6 +1835,24 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib, :changedefin
 	copy_files("D:/THC/C0702/out/TStruProd.dll", "D:/THC/C0702/ReleaseFiles/IntexCMO_With_cmo32/TStruProd#{Time.now.strftime("%Y%m%d%H%M")}.dll")
 	copy_files('D:/THC/C0702/ReleaseFiles/TStruProd.dll', 'D:/THC/C0702/out/TStruProd.dll')
 end
+
+#================================Update 13=========================
+task :update_web do
+	update_web_13("/cygdrive/d/Web_update_sev/Update_web_part.bat")
+end
+
+task :update_dll do
+	update_web_13("/cygdrive/d/Web_update_sev/Update_dll_part_No_web_file.bat")
+end
+
+task :update_web_report_template do
+	update_web_13("/cygdrive/d/Web_update_sev/Update_web_report_template.bat")
+end
+
+task :update_all do
+	update_web_13("/cygdrive/d/Web_update_sev/web_Update_new.bat")
+end
+
 #================================end=====================================
 desc "intel compliler setting ...."
 task :setintel do
@@ -1900,6 +1939,13 @@ def copy_to_produc(src_path, dest_path, file)
 		end
 	else
 		puts "file #{file} not found!"
+	end
+end
+
+def update_web_13(path)
+	Net::SSH.start("192.168.0.13", "Administrator", :password => "thc013*", :paranoid => false) do |ssh|
+	output = ssh.exec! path
+	puts output
 	end
 end
 
