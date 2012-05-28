@@ -8,12 +8,14 @@ require 'Rakefile.rb'
 require 'email.rb'
 
 def get_checkbox_item
-	tasks = "getlatest,increaseversion2,updateversion2,ThcLib,TZip,TRDSCrypto,TCnPool,TLogging,TMisc,TRDSData,TErrHandler,TMD,TASet,TDCalc,TSecurity,TRefEntity,TExchangeRateMgr,TStock,TOption,TOTS,TBond,TIRD,TCYD,TIntexCMO,TMarkit,TStruProd,TCDO,TOptionDeriv,TDBLoad,IntexCMOClient,TMongoDb,TPortfolio,TTask,TPathFileAnalyzer,TPathFileParser,TCalc,TPO,OASCalibrating,TRDSIRRCalc,TRDSCALL,TUserRole,IRRCalc,CollectOTS,IRRSvc,ThcGLView,ReverseEngineering,TFileDB,tnetcmd_all,TClientShell,TBusiness,TAnalysis,TClient,CrystalReportCom,CrystalReportClient,CreateReport,ReportSvc,UpdFunc,UpdSvc,tpl_XXX,tcamel,spda,TNetInfo,systest,RSSV,TSvc4ESeries,movetoreleasefiles,copy_to_products,copy_to_pcnest,ClientSetupPackage,IRRSvcSetupPackage,buildFiles_With_cmo322"
+	#tasks = "getlatest,increaseversion2,updateversion2,ThcLib,TZip,TRDSCrypto,TCnPool,TLogging,TMisc,TRDSData,TErrHandler,TMD,TASet,TDCalc,TSecurity,TRefEntity,TExchangeRateMgr,TStock,TOption,TOTS,TBond,TIRD,TCYD,TIntexCMO,TMarkit,TStruProd,TCDO,TOptionDeriv,TDBLoad,IntexCMOClient,TMongoDb,TPortfolio,TTask,TPathFileAnalyzer,TPathFileParser,TCalc,TPO,OASCalibrating,TRDSIRRCalc,TRDSCALL,TUserRole,IRRCalc,CollectOTS,IRRSvc,ThcGLView,ReverseEngineering,TFileDB,tnetcmd_all,TClientShell,TBusiness,TAnalysis,TClient,CrystalReportCom,CrystalReportClient,CreateReport,ReportSvc,UpdFunc,UpdSvc,tpl_XXX,tcamel,spda,TNetInfo,systest,RSSV,TSvc4ESeries,movetoreleasefiles,copy_to_products,copy_to_pcnest,ClientSetupPackage,IRRSvcSetupPackage,buildFiles_With_cmo322"
+	
+	tasks = "ThcLib,TZip,TRDSCrypto,TCnPool,TLogging,TMisc,TRDSData,TErrHandler,TMD,TASet,TDCalc,TSecurity,TRefEntity,TExchangeRateMgr,TStock,TOption,TOTS,TBond,TIRD,TCYD,TIntexCMO,TMarkit,TStruProd,TCDO,TOptionDeriv,TDBLoad,IntexCMOClient,TMongoDb,TPortfolio,TTask,TPathFileAnalyzer,TPathFileParser,TCalc,TPO,OASCalibrating,TRDSIRRCalc,TRDSCALL,TUserRole,IRRCalc,CollectOTS,IRRSvc,ThcGLView,ReverseEngineering,TFileDB,tnetcmd_all,TClientShell,TBusiness,TAnalysis,TClient,CrystalReportCom,CrystalReportClient,CreateReport,ReportSvc,UpdFunc,UpdSvc,tpl_XXX,tcamel,spda,TNetInfo,systest,RSSV,TSvc4ESeries,ClientSetupPackage,IRRSvcSetupPackage,update_web,update_dll,update_web_report_template,update_all"
 	task_arr = tasks.split(',')
 end
 
 get '/index' do
-	@task_arr = get_checkbox_item.sort
+	@task_arr = get_checkbox_item
 	erb html = <<html_end
 	<html>
 		<body>
@@ -51,7 +53,7 @@ get '/index' do
 						<% end %>
 					</td>
 					<td>
-						<% 60.upto 69 do |index| %>
+						<% 60.upto 67 do |index| %>
 						<input type="checkbox" name="<%= @task_arr[index] %>" value="<%= @task_arr[index] %>" /><%= @task_arr[index] %><br />
 						<% end %>
 					</td>
@@ -68,27 +70,23 @@ html_end
 end
 
 post '/result' do
-	log = File.new("logs/build.log", "w")
+	$date = Time.now.strftime("%Y%m%d %H%M")
+	log = File.new("logs/build_#{$date}.log", "w")
 	$stdout = STDOUT
 	$stderr = STDERR
 	$stdout.reopen(log)
 	$stdout.sync = true
 	$stderr.reopen(log)
 	task_hash = @env["rack.request.form_hash"]
-	task_hash.delete('run')
-	task_hash.delete('mail')
 	task_hash = task_depends(task_hash)
-	task_hash.each do |key, value|
+	sort_task = sort_task(task_hash)
+	#sort_task << 'copy_to_products'
+	#sort_task << 'copy_to_pcnest'
+	sort_task.each do |key|
 		task = Rake::Task[key.downcase]
 		task.reenable
 		task.invoke
 	end
-	task = Rake::Task['copy_to_products']
-	task.reenable
-	task.invoke
-	task = Rake::Task['copy_to_pcnest']
-	task.reenable
-	task.invoke
 	p task_hash
 	puts "overhaha"
 	#redirect '/result_detail'
@@ -113,8 +111,8 @@ after do
 end
 
 def mail_body
-	@output = File.open("logs/build.log").readlines
-	@flag = File.open("logs/build.log").read
+	@output = File.open("logs/build_#{$date}.log").readlines
+	@flag = File.open("logs/build_#{$date}.log").read
 	html = <<html_end
 	<html>
 		<style>body{background:black; color:white;}</style>
@@ -153,9 +151,9 @@ def send_result()
 	erb = ERB.new(content)
 	if(error != nil)
 		puts "the error is:" + error
-		send_email(mail, 'THC C0702_Release Develop Version Build Failure', erb.result(binding))
+		send_email(mail, 'THC C0702 Develop Version Build Failure', erb.result(binding))
 	else
-		send_email(mail, 'THC C0702_Release Develop Version Build Success', erb.result(binding))
+		send_email(mail, 'THC C0702 Develop Version Build Success', erb.result(binding))
 	end
 end
 
@@ -177,15 +175,18 @@ def task_depends(task_hash)
 	end
 	
 	if(!task_hash.has_key?('RSSV'))
-		#task_hash.store('RSSV', 'RSSV')
-	end
-	
-	if(!task_hash.has_key?('copy_to_products'))
-		#task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
-	end
-	
-	if(!task_hash.has_key?('copy_to_pcnest'))
-		#task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
+		task_hash.store('RSSV', 'RSSV')
 	end
 	task_hash
+end
+
+def sort_task(task_hash)
+	task_arr = get_checkbox_item
+	sort_task = []
+	task_arr.each do |task|
+		if(task_hash.has_key?(task))
+			sort_task << task
+		end
+	end
+	sort_task
 end
