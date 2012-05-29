@@ -1853,6 +1853,11 @@ task :update_all do
 	update_web_13("/cygdrive/d/Web_update_sev/web_Update_new.bat")
 end
 
+#================================GetWeb config===========================
+task :get_web_file do
+	sh "D:/THC/DailyWeb/GetWeb.bat"
+end
+
 #================================end=====================================
 desc "intel compliler setting ...."
 task :setintel do
