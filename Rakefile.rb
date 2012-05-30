@@ -1748,7 +1748,7 @@ task :copy_to_pcnest do
 	
 	#copy_files("C:\\THC\\C0702\\Products\\R0702\\rptsvc.exe", "\\\\192.168.0.167\\thc\\Back20070704\\FileList\\WebDev\\")
 	
-	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\test\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\dll\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E /D"
