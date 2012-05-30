@@ -17,7 +17,7 @@ end
 =end
 #================================Default config=====================================
 #bak = :increaseversion,:updateversion,
-task :default => [:precondition,:increaseversion,:updateversion,:thclib,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:copy_to_products,:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
+task :default => [:precondition,:increaseversion,:updateversion,:thclib,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:copy_to_products,:copy_to_pcnest:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
 	puts "daily build finished"
 end
 
@@ -1748,7 +1748,7 @@ task :copy_to_pcnest do
 	
 	#copy_files("C:\\THC\\C0702\\Products\\R0702\\rptsvc.exe", "\\\\192.168.0.167\\thc\\Back20070704\\FileList\\WebDev\\")
 	
-	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\test\\ /H /R /Y /E /D"
+	sh "xcopy #{src_path}\\Dll\\*.* #{pcnest_path}\\dll\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\IRRSvc\\*.* #{pcnest_path}\\IRRSvc\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\R0702\\*.* #{pcnest_path}\\R0702\\ /H /R /Y /E /D"
 	sh "xcopy #{src_path}\\RSSV\\*.* #{pcnest_path}\\RSSV\\ /H /R /Y /E /D"
