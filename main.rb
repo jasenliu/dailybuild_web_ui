@@ -53,7 +53,7 @@ get '/index' do
 						<% end %>
 					</td>
 					<td>
-						<% 60.upto 68 do |index| %>
+						<% 60.upto 70 do |index| %>
 						<input type="checkbox" name="<%= @task_arr[index] %>" value="<%= @task_arr[index] %>" /><%= @task_arr[index] %><br />
 						<% end %>
 					</td>
