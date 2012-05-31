@@ -173,7 +173,7 @@ def task_depends(task_hash)
 	end
 	
 	if(!task_hash.has_key?('RSSV'))
-		#task_hash.store('RSSV', 'RSSV')
+		task_hash.store('RSSV', 'RSSV')
 	end
 	
 	if(!task_hash.has_key?('copy_to_products'))
