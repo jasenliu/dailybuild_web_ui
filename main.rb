@@ -80,8 +80,6 @@ post '/result' do
 	task_hash = @env["rack.request.form_hash"]
 	task_hash = task_depends(task_hash)
 	sort_task = sort_task(task_hash)
-	#sort_task << 'copy_to_products'
-	#sort_task << 'copy_to_pcnest'
 	sort_task.each do |key|
 		task = Rake::Task[key.downcase]
 		task.reenable
@@ -176,6 +174,20 @@ def task_depends(task_hash)
 	
 	if(!task_hash.has_key?('RSSV'))
 		#task_hash.store('RSSV', 'RSSV')
+	end
+	
+	if(!task_hash.has_key?('copy_to_products'))
+		task_hash.store('copy_to_products', 'copy_to_products')
+	end
+	
+	if(!task_hash.has_key?('copy_to_pcnest'))
+		task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
+	end
+	
+	if(task_hash.has_key?('update_web') || task_hash.has_key?('update_dll') || task_hash.has_key?('update_web_report_template') || task_hash.has_key?('update_all') || task_hash.has_key?('get_web_file'))
+		task_hash.delete('RSSV')
+		task_hash.delete('copy_to_products')
+		task_hash.delete('copy_to_pcnest')
 	end
 	task_hash
 end
