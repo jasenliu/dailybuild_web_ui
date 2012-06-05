@@ -963,7 +963,8 @@ task :tnetcmd_all => [:resetvs6, :tnetcmd, :tnetsvr, :tprogress, :tmqsvr, :tacti
 end
 
 desc "build TNetCmd project ..."
-task :tnetcmd => [:get_latest_tnetcmd] do
+task :tnetcmd => [:get_latest_tnetcmd] do |t|
+	t.reenable
 	#puts "delete the old file TNetCmd.dll"
 	#delete_file('D:/THC/C0702/out/TNetCmd.dll')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TNetCmd/TNetCmd.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
@@ -980,7 +981,8 @@ task :get_latest_tnetcmd do |t|
 end
 
 desc "build TNetSvr project ..."
-task :tnetsvr => [:get_latest_tnetsvr] do
+task :tnetsvr => [:get_latest_tnetsvr] do |t|
+	t.reenable
 	#puts "delete the old file TNetSvr.exe"
 	#delete_file('D:/THC/C0702/out/TNetSvr.exe')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TNetSvr/TNetSvr.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
@@ -997,7 +999,8 @@ task :get_latest_tnetsvr do |t|
 end
 
 desc "build TProgress project ..."
-task :tprogress => [:get_latest_tprogress] do
+task :tprogress => [:get_latest_tprogress] do |t|
+	t.reenable
 	#puts "delete the old file TProgress.dll"
 	#delete_file('D:/THC/C0702/out/TProgress.dll')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TProgress/TProgress.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
@@ -1014,7 +1017,8 @@ task :get_latest_tprogress do |t|
 end
 
 desc "build TMQSvr project ..."
-task :tmqsvr => [:get_latest_tmqsvr] do
+task :tmqsvr => [:get_latest_tmqsvr] do |t|
+	t.reenable
 	#puts "delete the old file TMQSvr.exe"
 	#delete_file('D:/THC/C0702/out/TMQSvr.exe')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TMQSvr/TMQSvr.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
@@ -1031,7 +1035,8 @@ task :get_latest_tmqsvr do |t|
 end
 
 desc "build TActiveMQ project ..."
-task :tactivemq => [:get_latest_tactivemq] do
+task :tactivemq => [:get_latest_tactivemq] do |t|
+	t.reenable
 	#puts "delete the old file TActiveMQ.dll"
 	#delete_file('D:/THC/C0702/out/TActiveMQ.dll')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TActiveMQ/TActiveMQ.vcproj\" /rebuild /OpenMonitor /cfg=\"Release|Win32\" /Out=D:/THC/C0702/BuildScript/buildLog/TActiveMQ.log"
@@ -1048,7 +1053,8 @@ task :get_latest_tactivemq do |t|
 end
 
 desc "build TNetCalc project ..."
-task :tnetcalc => [:get_latest_tnetcalc] do
+task :tnetcalc => [:get_latest_tnetcalc] do |t|
+	t.reenable
 	#puts "delete the old file TNetCalc.exe"
 	#delete_file('D:/THC/C0702/out/TNetCalc.exe')
 	sh "BuildConsole \"D:/THC/C0702/CalcOTF/TNetCalc/TNetCalc.vcproj\" /rebuild /OpenMonitor /cfg=\"Release|Win32\" /Out=D:/THC/C0702/BuildScript/buildLog/TNetCalc.log"
@@ -1248,7 +1254,8 @@ task :tpl_xxx => [:resetvs6, :tpl_web, :tpl_calc, :tpl_SingleCalc, :tpl_Distribu
 end
 
 desc "build tpl_web project ..."
-task :tpl_web => [:get_latest_tpl_web] do
+task :tpl_web => [:get_latest_tpl_web] do |t|
+	t.reenable
 	#puts "delete the old file tpl_web.dll"
 	#delete_file('D:/THC/C0702/out/Plugins/tpl_web.dll')
 	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tpl_web/tpl_web.dsp /make \"tpl_web - Win32 Release\" /Rebuild"
@@ -1265,7 +1272,8 @@ task :get_latest_tpl_web do |t|
 end
 
 desc "build tpl_calc project ..."
-task :tpl_calc => [:get_latest_tpl_calc] do
+task :tpl_calc => [:get_latest_tpl_calc] do |t|
+	t.reenable
 	#puts "delete the old file tpl_calc.dll"
 	#delete_file('D:/THC/C0702/out/Plugins/tpl_calc.dll')
 	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tpl_calc/tpl_calc.dsp /make \"tpl_calc - Win32 Release\" /Rebuild"
@@ -1282,7 +1290,8 @@ task :get_latest_tpl_calc do |t|
 end
 
 desc "build tpl_SingleCalc project ..."
-task :tpl_SingleCalc => [:get_latest_tpl_SingleCalc] do
+task :tpl_SingleCalc => [:get_latest_tpl_SingleCalc] do |t|
+	t.reenable
 	#puts "delete the old file tpl_SingleCalc.dll"
 	#delete_file('D:/THC/C0702/out/Plugins/tpl_SingleCalc.dll')
 	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tpl_SingleCalc/tpl_SingleCalc.dsp /make \"tpl_SingleCalc - Win32 Release\" /Rebuild"
@@ -1299,7 +1308,8 @@ task :get_latest_tpl_SingleCalc do |t|
 end
 
 desc "build tpl_DistributedCalc project ..."
-task :tpl_DistributedCalc => [:get_latest_tpl_DistributedCalc] do
+task :tpl_DistributedCalc => [:get_latest_tpl_DistributedCalc] do |t|
+	t.reenable
 	#puts "delete the old file tpl_DistributedCalc.dll"
 	#delete_file('D:/THC/C0702/out/Plugins/tpl_DistributedCalc.dll')
 	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tpl_DistributedCalc/tpl_DistributedCalc.dsp /make \"tpl_DistributedCalc - Win32 Release\" /Rebuild"
@@ -1316,7 +1326,8 @@ task :get_latest_tpl_DistributedCalc do |t|
 end
 
 desc "build tpl_optimize project ..."
-task :tpl_optimize => [:get_latest_tpl_optimize] do
+task :tpl_optimize => [:get_latest_tpl_optimize] do |t|
+	t.reenable
 	#puts "delete the old file tpl_optimize.dll"
 	#delete_file('D:/THC/C0702/out/tpl_optimize.dll')
 	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tpl_optimize/tpl_optimize.dsp /make \"tpl_optimize - Win32 Release\" /Rebuild"
@@ -1333,7 +1344,8 @@ task :get_latest_tpl_optimize do |t|
 end
 
 desc "build TGroupCalcItemStr project ..."
-task :tgroupCalcItemStr => [:get_latest_tgroupCalcItemStr] do
+task :tgroupCalcItemStr => [:get_latest_tgroupCalcItemStr] do |t|
+	t.reenable
 	#puts "delete the old file TGroupCalcItemStr.dll"
 	#delete_file('D:/THC/C0702/out/TGroupCalcItemStr.dll')
 	sh "msdev.exe D:/THC/C0702/TCom2/TGroupCalcItemStr/TGroupCalcItemStr.dsp /make \"TGroupCalcItemStr - Win32 Release MinSize\" /Rebuild"
@@ -1460,7 +1472,8 @@ task :rssv => [:resetvs6, :splitportfolio, :mappingtool, :automktdata, :amdsv] d
 end
 
 desc "build SplitPortfolio project ..."
-task :splitportfolio => [:get_latest_splitportfolio] do
+task :splitportfolio => [:get_latest_splitportfolio] do |t|
+	t.reenable
 	sh "VB6.exe /make D:/THC/C0702/PCNest/RSSV/SplitPortfolio/SplitPortfolio.vbp /out D:/THC/C0702/BuildScript/buildlog/SplitPortfolio.log /outdir D:/THC/C0702/out/"
 	puts "copy SplitPortfolio.dll to release files folder"
 	copy_files('D:/THC/C0702/out/SplitPortfolio.dll', 'D:/THC/C0702/ReleaseFiles/SplitPortfolio.dll')
@@ -1476,7 +1489,8 @@ task :get_latest_splitportfolio do |t|
 end
 
 desc "build MappingTool project ..."
-task :mappingtool => [:get_latest_mappingtool] do
+task :mappingtool => [:get_latest_mappingtool] do |t|
+	t.reenable
 	sh "VB6.exe /make D:/THC/C0702/PCNest/RSSV/MappingTool/MappingTool.vbp /out D:/THC/C0702/BuildScript/buildlog/MappingTool.log /outdir D:/THC/C0702/out/"
 	puts "copy MappingTool.dll to release files folder"
 	copy_files('D:/THC/C0702/out/MappingTool.dll', 'D:/THC/C0702/ReleaseFiles/MappingTool.dll')
@@ -1492,7 +1506,8 @@ task :get_latest_mappingtool do |t|
 end
 
 desc "build AutoMktdata project ..."
-task :automktdata => [:get_latest_automktdata] do
+task :automktdata => [:get_latest_automktdata] do |t|
+	t.reenable
 	#puts "delete the old file AutoMktdata.dll"
 	#delete_file('D:/THC/C0702/out/AutoMktdata.dll')
 	sh "msdev.exe D:/THC/C0702/PCNest/RSSV/AutoMktdata/AutoMktdata.dsp /make \"AutoMktdata - Win32 Release MinSize\" /Rebuild"
@@ -1509,7 +1524,8 @@ task :get_latest_automktdata do |t|
 end
 
 desc "build AMDSV project ..."
-task :amdsv => [:get_latest_amdsv] do
+task :amdsv => [:get_latest_amdsv] do |t|
+	t.reenable
 	#puts "delete the old file rssv.exe"
 	#delete_file('D:/THC/C0702/out/rssv.exe')
 	sh "msdev.exe D:/THC/C0702/PCNest/RSSV/AMDSV/amdsv.dsp /make \"amdsv - Win32 Release\" /Rebuild"
@@ -1538,7 +1554,8 @@ task :tsvc4eseries => [:resetvs6, :tsvcclient, :rtdserver, :webservice] do
 end
 
 desc "build TSvcClient project ..."
-task :tsvcclient => [:get_latest_tsvcclient] do
+task :tsvcclient => [:get_latest_tsvcclient] do |t|
+	t.reenable
 	#puts "delete the old file TSvcClient.exe"
 	#delete_file('D:/THC/C0702/out(E-Series)/TSvcClient.exe')
 	#sh "devenv.exe D:/THC/C0702/E-Series/TSvcClient-vs2005/TSvcClient.vcproj /Out \"D:/THC/C0702/BuildScript/buildlog/TSvcClient.log\" \"Release|Win32\" /Rebuild"
@@ -1556,7 +1573,8 @@ task :get_latest_tsvcclient do |t|
 end
 
 desc "build RTDServer project ..."
-task :rtdserver => [:get_latest_rtdserver] do
+task :rtdserver => [:get_latest_rtdserver] do |t|
+	t.reenable
 	#puts "delete the old file RTDServer.dll"
 	#delete_file('D:/THC/C0702/out(E-Series)/RTDServer.dll')
 	sh "BuildConsole \"D:/THC/C0702/E-Series/RTDServer/RTDServer.vcproj\" /rebuild /OpenMonitor /cfg=\"Release MinSize|Win32\""
@@ -1573,7 +1591,8 @@ task :get_latest_rtdserver do |t|
 end
 
 desc "build WebService project ..."
-task :webservice => [:get_latest_webservice] do
+task :webservice => [:get_latest_webservice] do |t|
+	t.reenable
 	#puts "delete the old webservice file"
 	#delete_file('D:/THC/C0702/ReleaseFiles/WebService')
 	sh "devenv.exe D:/THC/C0702/W-Series/WebService/WebService.csproj /Rebuild"
@@ -1769,6 +1788,7 @@ end
 
 desc "build IntexCMO_with_cmo32 project ..."
 task :tintexcmo_with_com32 => [:get_latest_tintexcmo, :resetvs6, :presvthclib, :changedefine] do |t|
+	t.reenable
 	Rake::Task[:buildvc6thclib].invoke
 	#puts "delete the old file TIntexCMO.dll..."
 	#delete_file('D:/THC/C0702/out/TIntexCMO.dll')
@@ -1792,6 +1812,7 @@ end
 
 desc "build TCDO_with_cmo32 project ..."
 task :tcdo_with_cmo32 => [:get_latest_tcdo, :resetvs6, :presvthclib, :changedefine] do |t|
+	t.reenable
 	Rake::Task[:buildvc6thclib].invoke
 	#puts "delete the old file TCDO.dll..."
 	#delete_file('D:/THC/C0702/out/TCDO.dll')
@@ -1815,6 +1836,7 @@ end
 
 desc "build StruProd_with_com32 project ..."
 task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib, :changedefine] do |t|
+	t.reenable
 	Rake::Task[:buildvc6thclib].invoke
 	#puts "delete the old file TStruProd.dll..."
 	#delete_file('D:/THC/C0702/out/TStruProd.dll')
@@ -1860,18 +1882,21 @@ end
 
 #================================end=====================================
 desc "intel compliler setting ...."
-task :setintel do
+task :setintel do |t|
+	t.reenable
 	sh "reg.exe add \"HKCU\\Software\\Intel\\Intel Tools\\Select Compiler\\IDE\\6\" /v Compiler /t REG_SZ /d 91032 /f"
 	sh "reg.exe add \"HKCU\\Software\\Intel\\Intel Tools\\Select Compiler\\IDE\\6\" /v Use_Intel_Cxx /t REG_DWORD /d 00000001 /f"
 end
 
 desc "reset back to vs6 ..."
-task :resetvs6 do
+task :resetvs6 do |t|
+	t.reenable
 	sh "reg.exe add \"HKCU\\Software\\Intel\\Intel Tools\\Select Compiler\\IDE\\6\" /v Compiler /t REG_SZ /d 91032 /f"
 	sh "reg.exe add \"HKCU\\Software\\Intel\\Intel Tools\\Select Compiler\\IDE\\6\" /v Use_Intel_Cxx /t REG_DWORD /d 00000000 /f"
 end
 
-task :presvthclib do
+task :presvthclib do |t|
+	t.reenable
 	if(!is_lib_ms6_up_to_date)
 		sh "D:/THC/C0702/BuildScript/Mov2Intel.bat"
 	else
@@ -1879,7 +1904,8 @@ task :presvthclib do
 	end
 end
 
-task :buildvc6thclib do
+task :buildvc6thclib do |t|
+	t.reenable
 	if(!is_lib_ms6_up_to_date)
 		sh "BuildConsole \"D:/THC/C0702/ThcLib/ThcLib.dsp\" /build /OpenMonitor /cfg=\"Win32 Release\""
 		
@@ -1895,17 +1921,20 @@ task :buildvc6thclib do
 	end
 end
 
-task :recoverdefine do
+task :recoverdefine do |t|
+	t.reenable
 	copy_files('D:/THC/C0702/IntexUseable/IntexUseable_Real.h', 'D:/THC/C0702/TCom2/contrib/IntexUseable.h')
 end
 
-task :changedefine do
+task :changedefine do |t|
+	t.reenable
 	copy_files('D:/THC/C0702/BuildScript/dailybuildNotF.dat', 'D:/THC/C0702/IntexUseable/IntexUseable_Fake.h')
 	copy_files('D:/THC/C0702/TCom2/contrib/IntexUseable.h', 'D:/THC/C0702/IntexUseable/IntexUseable_Real.h')
 	copy_files('D:/THC/C0702/IntexUseable/IntexUseable_Fake.h', 'D:/THC/C0702/TCom2/contrib/IntexUseable.h')
 end
 
-task :recoverthclib do
+task :recoverthclib do |t|
+	t.reenable
 	copy_files('D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.libIntel', 'D:/THC/lib/ThcLib-vc6-mt-s-0_3_8.lib')
 	if(!File.exists?('D:/THC/C0702/out/TIntexCMO.dll'))
 		copy_files('D:/THC/C0702/out/TIntexCMO.dll', 'D:/THC/C0702/ReleaseFiles/TIntexCMO.dll')
