@@ -190,6 +190,7 @@ def task_depends(task_hash)
 	
 	if(task_hash.has_key?('update_web') || task_hash.has_key?('update_dll') || task_hash.has_key?('update_web_report_template') || task_hash.has_key?('update_all') || task_hash.has_key?('get_web_file'))
 		task_hash.delete('RSSV')
+		task_hash.delete('precondition')
 		task_hash.delete('copy_to_products')
 		task_hash.delete('copy_to_pcnest')
 	end
