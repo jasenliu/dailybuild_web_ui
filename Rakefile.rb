@@ -1109,7 +1109,7 @@ end
 
 #=============================TAnalysis config===================================
 desc "build TAnalysis project ..."
-task :tanalysis => [:get_latest_tanalysis] do
+task :tanalysis => [:get_latest_tanalysis, :get_latest_crystalreportcom] do
 	sh "VB6.exe /make D:/THC/C0702/TCom2/TAnalysis/TAnalysis.vbp /out D:/THC/C0702/BuildScript/buildlog/buildTAnalysis.log /outdir D:/THC/C0702/out/"
 	sh "regsvr32.exe D:/THC/C0702/out/TAnalysis.dll /s /u"
 	sh "regsvr32.exe D:/THC/C0702/out/TAnalysis.dll /s"
@@ -1978,8 +1978,8 @@ end
 
 def update_web_13(path)
 	Net::SSH.start("192.168.0.13", "Administrator", :password => "thc013*", :paranoid => false) do |ssh|
-	output = ssh.exec! path
-	puts output
+		output = ssh.exec! path
+		puts output
 	end
 end
 
