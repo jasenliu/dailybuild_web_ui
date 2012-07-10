@@ -172,22 +172,12 @@ def task_depends(task_hash)
 		task_hash.store('tpl_XXX', 'tpl_XXX')
 	end
 	
-	if(!task_hash.has_key?('RSSV'))
-		task_hash.store('RSSV', 'RSSV')
-	end
-	
 	if(!task_hash.has_key?('copy_to_products'))
 		task_hash.store('copy_to_products', 'copy_to_products')
 	end
 	
-	if(!task_hash.has_key?('copy_to_pcnest'))
-		task_hash.store('copy_to_pcnest', 'copy_to_pcnest')
-	end
-	
 	if(task_hash.has_key?('update_web') || task_hash.has_key?('update_dll') || task_hash.has_key?('update_web_report_template') || task_hash.has_key?('update_all') || task_hash.has_key?('get_web_file'))
-		task_hash.delete('RSSV')
 		task_hash.delete('copy_to_products')
-		task_hash.delete('copy_to_pcnest')
 	end
 	task_hash
 end
