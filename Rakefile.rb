@@ -2,6 +2,7 @@ require 'fileutils'
 require 'stringio'
 require 'ftools'
 require 'net/ssh'
+require 'update_file.rb'
 
 =begin
 module Kernel
@@ -1860,19 +1861,32 @@ end
 
 #================================Update 13=========================
 task :update_web do
-	update_web_13("/cygdrive/d/Web_update_sev/Update_web_part.bat")
+	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_part.bat")
 end
 
 task :update_dll do
-	update_web_13("/cygdrive/d/Web_update_sev/Update_dll_part_No_web_file.bat")
+	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_dll_part_No_web_file.bat")
 end
 
 task :update_web_report_template do
-	update_web_13("/cygdrive/d/Web_update_sev/Update_web_report_template.bat")
+	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_report_template.bat")
 end
 
 task :update_all do
-	update_web_13("/cygdrive/d/Web_update_sev/web_Update_new.bat")
+	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/web_Update_new.bat")
+end
+
+#===============================Update 173===================================
+task :update_173 do
+  host = "192.168.0.173"
+  user = "Administrator"
+  passwd = "thc173*"
+  local_path = "D:/173_update_file"
+  remote_path = "D:/173_update"
+  bat_file_path = "/cygdrive/d/Web_update_sev/web_Update_new.bat"
+
+  update_remote_file(host, user, passwd, local_path, remote_path)
+  call_remote_bat(host, user, passwd, bat_file_path)
 end
 
 #================================GetWeb config===========================
@@ -1976,9 +1990,9 @@ def copy_to_produc(src_path, dest_path, file)
 	end
 end
 
-def update_web_13(path)
-	Net::SSH.start("192.168.0.13", "Administrator", :password => "thc013*", :paranoid => false) do |ssh|
-		output = ssh.exec! path
+def call_remote_bat(host, user, passwd, bat_file_path)
+	Net::SSH.start(host, user, :password => passwd, :paranoid => false) do |ssh|
+		output = ssh.exec! bat_file_path
 		puts output
 	end
 end
