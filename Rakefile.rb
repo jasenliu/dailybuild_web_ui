@@ -1144,7 +1144,7 @@ end
 
 #=============================CrystalReportCom config===================================
 desc "build CrystalReportCom project ..."
-task :crystalreportcom => [:get_latest_crystalreportcom] do
+task :crystalreportcom => [:get_latest_crystalreportcom, :get_latest_template] do
 	sh "regsvr32.exe D:/THC/C0702/out/ThcCrystalReports.dll /s /u"
 	sh "VB6.exe /make D:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll/ThcCrystalReports.vbp /out D:/THC/C0702/BuildScript/buildlog/buildCryRepCom.log /outdir D:/THC/C0702/out/"
 	sh "regsvr32.exe D:/THC/C0702/out/ThcCrystalReports.dll /s"
@@ -1158,6 +1158,13 @@ task :get_latest_crystalreportcom do |t|
 	sh "svn revert -R D:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll D:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
 	sh "svn update D:/THC/C0702/ThcCrystalReport/ReportWriter/ThcCrystalReportDll"
+end
+
+desc "get latest template from svn"
+task :get_latest_template do |t|
+  t.reenable
+  sh "svn revert -R D:/THC/C0702/ReleaseFiles/Web ReportTemplates"
+  sh "svn update D:/THC/C0702/ReleaseFiles/Web ReportTemplates"
 end
 
 #=============================CrystalReportClient config===================================
