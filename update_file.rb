@@ -17,13 +17,12 @@ def update_remote_file(host, user, passwd, local_path, remote_path)
   begin_time = Time.now.strftime("%Y-%m-%d %H:%M:%S")
   Net::SSH.start(host, user, :password => passwd, :paranoid => false) do |ssh|
     ssh.sftp.connect do |sftp|
-      i = 0
       Find.find(local_path) do |file|
-        i += 1
         local_file = file
         remote_file = remote_path + local_file.sub(local_path, '')
 
-        if (File.directory?(file) && i != 1)
+        next if file == local_path
+        if File.directory?(file)
           log.info("#{remote_file} dir not exists")
           sftp.mkdir!(remote_file, :permissions => 0755)
           log.info("mkremotedir #{remote_file}")
