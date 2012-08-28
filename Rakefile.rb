@@ -1860,7 +1860,7 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib, :changedefin
 end
 
 #================================Update 13=========================
-task :update_web do
+task :update_web => [:get_web_file] do
 	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_part.bat")
 end
 
@@ -1890,7 +1890,8 @@ task :update_173 do
 end
 
 #================================GetWeb config===========================
-task :get_web_file do
+task :get_web_file do |t|
+	t.reenable
 	sh "D:/THC/DailyWeb/GetWeb.bat"
 end
 
