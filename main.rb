@@ -180,7 +180,7 @@ def task_depends(task_hash)
 		task_hash.store('copy_to_products', 'copy_to_products')
 	end
 	
-	if(task_hash.has_key?('update_web') || task_hash.has_key?('update_173') || task_hash.has_key?('update_all') || task_hash.has_key?('get_web_file') || task_hash.has_key?('update_web_report_template'))
+	if(task_hash.has_key?('update_web') || task_hash.has_key?('update_173') || task_hash.has_key?('update_all') || task_hash.has_key?('get_web_file') || task_hash.has_key?('update_web_report_template') || task_hash.has_key?('update_dll'))
 		task_hash.delete('copy_to_products')
 	end
 	task_hash
