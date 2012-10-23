@@ -1868,8 +1868,14 @@ task :update_dll do
 	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_dll_part_No_web_file.bat")
 end
 
-task :update_web_report_template do
+task :update_web_report_template => [:get_latest_report_template] do
 	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_report_template.bat")
+end
+
+task :get_latest_report_template do |t|
+	t.reenable
+	sh "svn revert -R D:/THC/C0702/ReleaseFiles"
+	sh "svn update D:/THC/C0702/ReleaseFiles"
 end
 
 task :update_all do
