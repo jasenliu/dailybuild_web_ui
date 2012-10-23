@@ -1874,7 +1874,7 @@ end
 
 task :get_latest_report_template do |t|
 	t.reenable
-	sh "svn revert -R D:/THC/C0702/ReleaseFiles"
+	#sh "svn revert -R D:/THC/C0702/ReleaseFiles"
 	sh "svn update D:/THC/C0702/ReleaseFiles"
 end
 
