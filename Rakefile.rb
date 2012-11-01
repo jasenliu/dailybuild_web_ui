@@ -477,6 +477,14 @@ task :tmarkit => [:get_latest_tmarkit, :setintel] do
 	copy_files('D:/THC/C0702/TCom2/TMarkit/cmo_W32.dll', 'D:/THC/C0702/ReleaseFiles/cmo_W32.dll')
 	puts "copy cmo_W32.dll to out folder"
 	copy_files('D:/THC/C0702/TCom2/TMarkit/cmo_W32.dll', 'D:/THC/C0702/out/cmo_W32.dll')
+	puts "copy sfw.dll to release files folder"
+	copy_files('D:/THC/C0702/TCom2/TMarkit/sfw.dll', 'D:/THC/C0702/ReleaseFiles/sfw.dll')
+	puts "copy sfw.dll to out folder"
+	copy_files('D:/THC/C0702/TCom2/TMarkit/sfw.dll', 'D:/THC/C0702/out/sfw.dll')
+	puts "copy wsa.dll to release files folder"
+	copy_files('D:/THC/C0702/TCom2/TMarkit/wsa.dll', 'D:/THC/C0702/ReleaseFiles/wsa.dll')
+	puts "copy wsa.dll to out folder"
+	copy_files('D:/THC/C0702/TCom2/TMarkit/wsa.dll', 'D:/THC/C0702/out/wsa.dll')
 	Rake::Task[:resetvs6].invoke
 end
 
