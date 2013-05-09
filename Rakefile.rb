@@ -361,7 +361,7 @@ end
 
 #================================TOTS config=====================================
 desc "build TOTS project ..."
-task :tots => [:get_latest_tots, :setintel] do
+task :tots => [:get_latest_tots, :updateversion, :setintel] do
 	#puts "delete the old file TOTS.dll"
 	#delete_file('D:/THC/C0702/out/TOTS.dll')
 	sh "BuildConsole \"D:/THC/C0702/TCom2/TOTS/TOTS.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release MinSize\""
