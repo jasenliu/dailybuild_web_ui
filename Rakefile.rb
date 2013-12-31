@@ -1906,7 +1906,8 @@ end
 #================================GetWeb config===========================
 task :get_web_file do |t|
 	t.reenable
-	sh "D:/THC/DailyWeb/GetWeb.bat"
+	#sh "D:/THC/DailyWeb/GetWeb.bat"
+	sh "D:/THC/get_web/get_web.bat"
 end
 
 #================================end=====================================
