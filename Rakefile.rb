@@ -902,7 +902,10 @@ desc "build IRRSvc project ..."
 task :irrsvc => [:get_latest_irrsvc, :resetvs6] do
 	#puts "delete the old file IRRSvc.exe"
 	#delete_file('D:/THC/C0702/out/IRRSvc.exe')
-	sh "msdev.exe D:/THC/C0702/PCNest/IRRSvc2/IRRSvc.dsp /make \"IRRSvc - Win32 Release\" /Rebuild"
+	#sh "msdev.exe D:/THC/C0702/PCNest/IRRSvc2/IRRSvc.dsp /make \"IRRSvc - Win32 Release\" /Rebuild"
+	#sh "BuildConsole D:/THC/C0702/PCNest/IRRSvc2/IRRSvc.vcproj /make \"IRRSvc - Win32 Release\" /Rebuild"
+	#sh "BuildConsole \"D:/THC/C0702/PCNest/IRRSvc2/IRRSvc.vcproj\" /rebuild /OpenMonitor /cfg=\"Release|Win32\""
+	sh "devenv.exe D:/THC/C0702/PCNest/IRRSvc2/IRRSvc.vcproj /Rebuild"
 	puts "copy IRRSvc.exe to release files folder"
 	copy_files('D:/THC/C0702/out/IRRSvc.exe', 'D:/THC/C0702/ReleaseFiles/IRRSvc.exe')
 end
@@ -1721,7 +1724,7 @@ end
 
 task :irrsvc1 do |t|
 	t.reenable
-	files = "irrsvc.exe,collectots.dll,log4cxx.dll"
+	files = "irrsvc.exe,collectots.dll,log4cxx.dll,thc_log4cxxr.dll"
 	release_IRRSvc_arr = files.split(',')
 	product_IRRSvc_path = "D:/THC/C0702/Products/IRRSvc/"
 	release_IRRSvc_arr.each do |file|
