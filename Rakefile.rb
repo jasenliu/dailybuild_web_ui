@@ -1624,7 +1624,7 @@ task :get_latest_webservice do |t|
 end
 #================================CopyToProducts config=============================================
 desc "build CopyToProducts project ..."
-task :copy_to_products => [:dll, :r0702, :trds, :rssv1, :tnetsvr1, :tmqsvr1, :irrsvc1, :updsvc1, :w0702] do
+task :copy_to_products => [:dll, :r0702, :trds, :rssv1, :tnetsvr1, :tmqsvr1, :irrsvc1, :updsvc1] do
 	puts "copy to products finished"
 end
 
