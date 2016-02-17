@@ -1210,7 +1210,10 @@ desc "build ReportSvc project ..."
 task :reportsvc => [:get_latest_reportsvc, :resetvs6] do
 	#puts "delete the old file RptSvc.exe"
 	#delete_file('D:/THC/C0702/out/RptSvc.exe')
-	sh "BuildConsole \"D:/THC/C0702/ThcCrystalReport/ReportService/Service/RptSvc.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
+	#sh "BuildConsole \"D:/THC/C0702/ThcCrystalReport/ReportService/Service/RptSvc.dsp\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
+	#sh "BuildConsole \"D:/THC/C0702/ThcCrystalReport/ReportService/Service/RptSvc.vcproj\" /rebuild /OpenMonitor /cfg=\"Win32 Release\""
+	#sh "BuildConsole \"D:/THC/C0702/ThcCrystalReport/ReportService/Service/RptSvc.vcproj\" /rebuild /OpenMonitor /cfg=\"Release|Win32\""
+	sh "devenv D:/THC/C0702/ThcCrystalReport/ReportService/Service/RptSvc.vcproj /Rebuild"
 	puts "copy RptSvc.exe to release files folder"
 	copy_files('D:/THC/C0702/out/RptSvc.exe', 'D:/THC/C0702/ReleaseFiles/RptSvc.exe')
 end
@@ -1906,11 +1909,30 @@ task :update_173 do
   call_remote_bat(host, user, passwd, bat_file_path)
 end
 
+#===============================Update 45===================================
+task :update_45 => [:get_thomasho_web_file] do
+  host = "192.168.0.45"
+  user = "Administrator"
+  passwd = "lai2007*"
+  bat_file_path = "/cygdrive/d/web_update/test.bat"
+
+  #call_remote_bat(host, user, passwd, bat_file_path)
+	#call_remote_bat("192.168.0.45", "Administrator", "lai2007*", "/cygdrive/d/web_update/test.bat")
+
+	call_remote_bat("192.168.0.14", "Administrator", "thc2016*", "/cygdrive/D/jsliu/Web_update_sev/ping56.bat")
+end
+
 #================================GetWeb config===========================
 task :get_web_file do |t|
 	t.reenable
 	#sh "D:/THC/DailyWeb/GetWeb.bat"
 	sh "D:/THC/get_web/get_web.bat"
+end
+
+#================================GetThomasho config===========================
+task :get_thomasho_web_file do |t|
+	t.reenable
+	sh "D:/THC/get_web/get_thomasho_web_file.bat"
 end
 
 #================================end=====================================
@@ -2011,6 +2033,7 @@ end
 
 def call_remote_bat(host, user, passwd, bat_file_path)
 	Net::SSH.start(host, user, :password => passwd, :paranoid => false) do |ssh|
+		puts "bat_file_path:#{bat_file_path}"
 		output = ssh.exec! bat_file_path
 		puts output
 	end
