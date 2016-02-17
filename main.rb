@@ -4,8 +4,8 @@ require 'rake'
 require 'erb'
 require 'net/smtp'
 require 'mailfactory'
-require 'Rakefile.rb'
-require 'email.rb'
+require './Rakefile.rb'
+require './email.rb'
 
 def get_checkbox_item
 	#tasks = "getlatest,increaseversion2,updateversion2,ThcLib,TZip,TRDSCrypto,TCnPool,TLogging,TMisc,TRDSData,TErrHandler,TMD,TASet,TDCalc,TSecurity,TRefEntity,TExchangeRateMgr,TStock,TOption,TOTS,TBond,TIRD,TCYD,TIntexCMO,TMarkit,TStruProd,TCDO,TOptionDeriv,TDBLoad,IntexCMOClient,TMongoDb,TPortfolio,TTask,TPathFileAnalyzer,TPathFileParser,TCalc,TPO,OASCalibrating,TRDSIRRCalc,TRDSCALL,TUserRole,IRRCalc,CollectOTS,IRRSvc,ThcGLView,ReverseEngineering,TFileDB,tnetcmd_all,TClientShell,TBusiness,TAnalysis,TClient,CrystalReportCom,CrystalReportClient,CreateReport,ReportSvc,UpdFunc,UpdSvc,tpl_XXX,tcamel,spda,TNetInfo,systest,RSSV,TSvc4ESeries,movetoreleasefiles,copy_to_products,copy_to_pcnest,ClientSetupPackage,IRRSvcSetupPackage,buildFiles_With_cmo322"

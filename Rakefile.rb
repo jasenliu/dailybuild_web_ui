@@ -1,8 +1,8 @@
 require 'fileutils'
 require 'stringio'
-require 'ftools'
+#require 'ftools'
 require 'net/ssh'
-require 'update_file.rb'
+require './update_file.rb'
 
 =begin
 module Kernel
@@ -1873,17 +1873,17 @@ task :tstruprod => [:get_latest_tstruprod, :resetvs6, :presvthclib, :changedefin
 	copy_files('D:/THC/C0702/ReleaseFiles/TStruProd.dll', 'D:/THC/C0702/out/TStruProd.dll')
 end
 
-#================================Update 13=========================
+#================================Update 14=========================
 task :update_web => [:get_web_file] do
-	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_part.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_part.bat")
 end
 
 task :update_dll do
-	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_dll_part_No_web_file.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_dll_part_No_web_file.bat")
 end
 
 task :update_web_report_template => [:get_latest_report_template] do
-	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/Update_web_report_template.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_report_template.bat")
 end
 
 task :get_latest_report_template do |t|
@@ -1893,7 +1893,7 @@ task :get_latest_report_template do |t|
 end
 
 task :update_all do
-	call_remote_bat("192.168.0.13", "Administrator", "thc013*", "/cygdrive/d/Web_update_sev/web_Update_new.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/web_Update_new.bat")
 end
 
 #===============================Update 173===================================
@@ -2007,7 +2007,8 @@ end
 
 def copy_files(from, to)
 	#File.syscopy(from, to)
-	File.cp(from, to, true)
+	#File.cp(from, to, true)
+  FileUtils.cp(from, to)
 	#FileUtils.cp(from, to)
 end
 	
