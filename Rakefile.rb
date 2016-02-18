@@ -1919,7 +1919,7 @@ task :update_45 => [:get_thomasho_web_file] do
   #call_remote_bat(host, user, passwd, bat_file_path)
 	#call_remote_bat("192.168.0.45", "Administrator", "lai2007*", "/cygdrive/d/web_update/test.bat")
 
-	call_remote_bat("192.168.0.14", "Administrator", "thc2016*", "/cygdrive/D/jsliu/Web_update_sev/ping56.bat")
+	#call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/D/jsliu/Web_update_sev/ping56.bat")
 end
 
 #================================GetWeb config===========================

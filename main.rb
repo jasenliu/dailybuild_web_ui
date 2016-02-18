@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'rake'
-require 'erb'
+require 'tilt/erb'
 require 'net/smtp'
 require 'mailfactory'
 require './Rakefile.rb'
@@ -99,6 +99,7 @@ configure :development do
   enable :logging, :dump_errors
   set :raise_errors, true
 	set :env, :development
+  set :bind, '192.168.0.237'
 end
 
 after do
