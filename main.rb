@@ -59,7 +59,7 @@ get '/index' do
 					</td>
 				</tr>
 			</table><br />
-			MailTo:<input type="text" name="mail" value="jsliu" />@thc.net.cn
+			MailTo:<input type="text" name="mail" value="eng-thc" />@thc.net.cn
 			<input type="submit" name="run" value="run" />
 			<input type="button" name="view_console" value="view_console" onclick="window.location = '/result_detail'" />
 			</form>
@@ -99,7 +99,7 @@ configure :development do
   enable :logging, :dump_errors
   set :raise_errors, true
 	set :env, :development
-  set :bind, '192.168.0.237'
+  set :bind, '192.168.0.57'
 end
 
 after do

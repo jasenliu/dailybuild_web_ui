@@ -1875,15 +1875,15 @@ end
 
 #================================Update 14=========================
 task :update_web => [:get_web_file] do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_part.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_part_57.bat")
 end
 
 task :update_dll do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_dll_part_No_web_file.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_dll_part_No_web_file_57.bat")
 end
 
 task :update_web_report_template => [:get_latest_report_template] do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_report_template.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_report_template_57.bat")
 end
 
 task :get_latest_report_template do |t|
