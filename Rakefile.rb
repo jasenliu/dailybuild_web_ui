@@ -1913,6 +1913,10 @@ task :update_all do
 	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/web_Update_new.bat")
 end
 
+task :update_thomasho => [:get_thomasho_web_file] do
+	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/update_thomasho_web_57.bat")
+end
+
 #===============================Update 173===================================
 task :update_173 do
   host = "192.168.0.173"
@@ -2026,6 +2030,7 @@ def copy_files(from, to)
 	#File.syscopy(from, to)
 	#File.cp(from, to, true)
   FileUtils.cp(from, to)
+	puts "#{from} -> #{to}"
 	#FileUtils.cp(from, to)
 end
 	
