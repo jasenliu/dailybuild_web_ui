@@ -2055,7 +2055,7 @@ def copy_to_produc(src_path, dest_path, file)
 end
 
 def call_remote_bat(host, user, passwd, bat_file_path)
-	Net::SSH.start(host, user, :password => passwd, :paranoid => false) do |ssh|
+	Net::SSH.start(host, user, :password => passwd) do |ssh|
 		puts "bat_file_path:#{bat_file_path}"
 		output = ssh.exec! bat_file_path
 		puts output

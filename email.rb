@@ -22,7 +22,7 @@ def send_email(to, subject, html)
 	mail.subject = subject
 	mail.html = html
 	
-	Net::SMTP.start('192.168.0.190') { |smtp|
+	Net::SMTP.start('mail.thc.net.cn') { |smtp|
     smtp.send_message(mail.to_s(), 'DailyBuild@thc.net.cn', to)
 }
 end
