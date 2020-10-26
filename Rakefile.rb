@@ -1577,7 +1577,8 @@ task :amdsv => [:get_latest_amdsv] do |t|
 	t.reenable
 	#puts "delete the old file rssv.exe"
 	#delete_file('D:/THC/C0702/out/rssv.exe')
-	sh "msdev.exe D:/THC/C0702/PCNest/RSSV/AMDSV/amdsv.dsp /make \"amdsv - Win32 Release\" /Rebuild"
+	#sh "msdev.exe D:/THC/C0702/PCNest/RSSV/AMDSV/amdsv.dsp /make \"amdsv - Win32 Release\" /Rebuild"
+  sh "BuildConsole \"D:/THC/C0702/PCNest/RSSV/AMDSV/amdsv.vcxproj\" /rebuild /OpenMonitor /cfg=\"Release|Win32\""
 	puts "copy rssv.exe to release files folder"
 	copy_files('D:/THC/C0702/out/rssv.exe', 'D:/THC/C0702/ReleaseFiles/rssv.exe')
 end
