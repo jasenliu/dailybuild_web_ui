@@ -83,6 +83,8 @@ task :tutilitydotnet => [:get_latest_tutilitydotnet] do
   sh "BuildConsole \"D:/THC/C0702/TCom2/TUtilityDotNet/TUtilityDotNet.sln\" /rebuild /OpenMonitor /cfg=\"Release|Any CPU\""
   puts "copy TUtilityDotNet.dll to release files folder"
   copy_files('D:/THC/C0702/out/TUtilityDotNet.dll', 'D:/THC/C0702/ReleaseFiles/TUtilityDotNet.dll')
+	copy_files('D:/THC/C0702/out/TUtilityDotNet.dll', 'D:/THC/C0702/ReleaseFiles64/TUtilityDotNet.dll')
+	copy_files('D:/THC/C0702/out/TUtilityDotNet.dll', 'D:/THC/C0702/out64/TUtilityDotNet.dll')
 end
 
 desc "get latest tutilitydotnet version from svn ..."
