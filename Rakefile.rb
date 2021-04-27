@@ -1300,7 +1300,7 @@ end
 
 #================================tpl_XXX config=====================================
 desc desc "build tpl_XXX project ..."
-task :tpl_xxx => [:resetvs6, :tpl_web, :tpl_calc, :tpl_SingleCalc, :tpl_DistributedCalc, :tpl_optimize, :tgroupCalcItemStr] do
+task :tpl_xxx => [:resetvs6, :tpl_web, :tlink_calc, :tpl_calc, :tpl_SingleCalc, :tpl_DistributedCalc, :tpl_optimize, :tgroupCalcItemStr] do
 	Rake::Task[:resetvs6].invoke
 end
 
@@ -1320,6 +1320,24 @@ task :get_latest_tpl_web do |t|
 	sh "svn revert -R D:/THC/C0702/CalcOTF/plugins/tpl_web"
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tpl_web D:/THC/C0702/CalcOTF/plugins/tpl_web"
 	sh "svn update D:/THC/C0702/CalcOTF/plugins/tpl_web"
+end
+
+desc "build tlink_calc project ..."
+task :tlink_calc => [:get_latest_tlink_calc] do |t|
+	t.reenable
+	#puts "delete the old file tpl_web.dll"
+	#delete_file('D:/THC/C0702/out/Plugins/tpl_web.dll')
+	sh "msdev.exe D:/THC/C0702/CalcOTF/plugins/tlink_calc/tlink_calc.dsp /make \"tlink_calc - Win32 Release\" /Rebuild"
+	puts "copy tlink_calc.dll to release files folder"
+	copy_files('D:/THC/C0702/out/tlink_calc.dll', 'D:/THC/C0702/ReleaseFiles/Plugins/tlink_calc.dll')
+end
+
+desc "get latest tlink_calc version from svn ..."
+task :get_latest_tlink_calc do |t|
+	t.reenable
+	sh "svn revert -R D:/THC/C0702/CalcOTF/plugins/tlink_calc"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/CalcOTF/plugins/tlink_calc D:/THC/C0702/CalcOTF/plugins/tlink_calc"
+	sh "svn update D:/THC/C0702/CalcOTF/plugins/tlink_calc"
 end
 
 desc "build tpl_calc project ..."
