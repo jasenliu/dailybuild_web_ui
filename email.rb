@@ -23,7 +23,7 @@ def send_email(to, subject, html)
 	mail.subject = subject
 	mail.html = html
 	
-	Net::SMTP.start('smtp.exmail.qq.com', 25, 'smtp.exmail.qq.com', 'jsliu@thc.net.cn', '2018*Dm') { |smtp|
+	Net::SMTP.start('smtp.exmail.qq.com', 25, 'smtp.exmail.qq.com', 'jsliu@thc.net.cn', 'Dm2018*') { |smtp|
     smtp.send_message(mail.to_s(), 'jsliu@thc.net.cn', to)
 }
   puts 'email send out...'
