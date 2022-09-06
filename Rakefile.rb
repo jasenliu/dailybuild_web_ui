@@ -18,7 +18,7 @@ end
 =end
 #================================Default config=====================================
 #bak = :increaseversion,:updateversion,
-task :default => [:precondition,:increaseversion,:updateversion,:thclib,:tutilitydotnet,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:copy_to_products,:copy_to_pcnest,:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
+task :default => [:precondition,:increaseversion,:updateversion,:thclib,:tutilitydotnet,:tzip,:trdscrypto,:tcnpool,:tlogging,:tmisc,:trdsdata,:terrhandler,:tmd,:taset,:tdcalc,:tsecurity,:trefentity,:texchangeratemgr,:tstock,:toption,:tots,:tbond,:tird,:tcyd,:tintexcmo,:tmarkit,:tstruprod,:tcdo,:toptionderiv,:tdbload,:intexcmoclient,:tmongodb,:tportfolio,:ttask,:tpathfileanalyzer,:tpathfileparser,:tcalc,:tpo,:oascalibrating,:trdsirrcalc,:trdscall,:tuserrole,:irrcalc,:collectots,:irrsvc,:thcglview,:reverseengineering,:tfiledb,:tnetcmd_all,:tclientshell,:tbusiness,:tanalysis,:tclient,:crystalreportcom,:crystalreportclient,:createreport,:reportsvc,:updfunc,:updsvc,:tpl_xxx,:tcamel,:spda,:tnetinfo,:systest,:rssv,:tsvc4eseries,:tdd,:copy_to_products,:copy_to_pcnest,:clientsetuppackage,:irrsvcsetuppackage,:buildFiles_With_cmo322] do
 	puts "daily build finished"
 end
 
@@ -1662,10 +1662,13 @@ end
 
 desc "build WebService project ..."
 task :webservice => [:get_latest_webservice] do |t|
+	devenv2019 = "C:/PROGRA~2/MICROS~1/2019/COMMUN~1/Common7/IDE/devenv"
 	t.reenable
 	#puts "delete the old webservice file"
 	#delete_file('D:/THC/C0702/ReleaseFiles/WebService')
-	sh "devenv.exe D:/THC/C0702/W-Series/WebService/WebService.csproj /Rebuild"
+	sh "#{devenv2019} D:/THC/C0702/W-Series/WebService/WebService.csproj /Rebuild"
+	#sh "devenv.exe D:/THC/C0702/W-Series/WebService/WebService.csproj /Rebuild"
+	
 	puts "copy webservice fill to release files folder"
 	sh "xcopy D:\\THC\\C0702\\W-Series\\WebService\\*.asmx D:\\THC\\C0702\\ReleaseFiles\\WebService\\ /H /R /Y"
 	copy_files('D:/THC/C0702/W-Series/WebService/web.config', 'D:/THC/C0702/ReleaseFiles/WebService/web.config')
@@ -1680,6 +1683,24 @@ task :get_latest_webservice do |t|
 	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/W-Series/WebService D:/THC/C0702/W-Series/WebService"
 	sh "svn update D:/THC/C0702/W-Series/WebService"
 end
+
+#================================TTD.NET config(vs 2019)=============================================
+desc "build TTD.NET project ..."
+task :ttd => [:get_latest_ttd] do
+	devenv2019 = "C:/PROGRA~2/MICROS~1/2019/COMMUN~1/Common7/IDE/devenv"
+	sh "#{devenv2019} D:/THC/C0702/TCom2/TTD.NET/TTD.sln /build \"Release|Any CPU\""
+	puts "copy TTD.dll to release files folder"
+	copy_files('D:/THC/C0702/out/TTD.dll', 'D:/THC/C0702/ReleaseFiles/TTD.dll')
+end
+
+desc "get latest ttd version from svn ..."
+task :get_latest_ttd do |t|
+	t.reenable
+	sh "svn revert -R D:/THC/C0702/TCom2/TTD.NET/"
+	#sh "svn checkout https://192.168.0.6:8443/svn/Repo/THC/C0702/Misc/SPDA D:/THC/C0702/Misc/SPDA"
+	sh "svn update D:/THC/C0702/TCom2/TTD.NET/"
+end
+
 #================================CopyToProducts config=============================================
 desc "build CopyToProducts project ..."
 task :copy_to_products => [:dll, :r0702, :trds, :rssv1, :tnetsvr1, :tmqsvr1, :irrsvc1, :updsvc1] do
@@ -1689,7 +1710,7 @@ end
 release_path = "D:/THC/C0702/ReleaseFiles/"
 task :dll do |t|
 	t.reenable
-	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tutilitydotnet.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tmap.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tanalysisdotnet.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll,sfw.dll,wsa.dll"
+	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tutilitydotnet.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tmap.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tanalysisdotnet.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll,sfw.dll,wsa.dll,ttd.dll"
 	release_dll_arr = release_dlls.split(',')
 	product_Dll_path = "D:/THC/C0702/Products/Dll/"
 	release_dll_arr.each do |dll|
@@ -1930,15 +1951,15 @@ end
 
 #================================Update 14=========================
 task :update_web => [:get_web_file] do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_part_57.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "HEFEIzhidic814", "/cygdrive/d/jsliu/Web_update_sev/Update_web_part_57.bat")
 end
 
 task :update_dll do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_dll_part_No_web_file_57.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "HEFEIzhidic814", "/cygdrive/d/jsliu/Web_update_sev/Update_dll_part_No_web_file_57.bat")
 end
 
 task :update_web_report_template => [:get_latest_report_template] do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/Update_web_report_template_57.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "HEFEIzhidic814", "/cygdrive/d/jsliu/Web_update_sev/Update_web_report_template_57.bat")
 end
 
 task :get_latest_report_template do |t|
@@ -1948,11 +1969,11 @@ task :get_latest_report_template do |t|
 end
 
 task :update_all do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/web_Update_new.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "HEFEIzhidic814", "/cygdrive/d/jsliu/Web_update_sev/web_Update_new.bat")
 end
 
 task :update_thomasho => [:get_thomasho_web_file] do
-	call_remote_bat("192.168.0.14", "Administrator", "thc014*", "/cygdrive/d/jsliu/Web_update_sev/update_thomasho_web_57.bat")
+	call_remote_bat("192.168.0.14", "Administrator", "HEFEIzhidic814", "/cygdrive/d/jsliu/Web_update_sev/update_thomasho_web_57.bat")
 end
 
 #===============================Update 173===================================
