@@ -94,6 +94,8 @@ task :get_latest_tutilitydotnet do |t|
 	sh "svn update D:/THC/C0702/TCom2/TUtilityDotNet"
 end
 
+
+
 #================================TZip config=====================================
 desc "build tzip project ...."
 task :tzip => [:get_latest_tzip, :resetvs6] do
@@ -1173,6 +1175,22 @@ task :get_latest_tanalysisdotnet do |t|
 	sh "svn update D:/THC/C0702/TCom2/TAnalysisDotNet"
 end
 
+#=============================TNet config(vs2019)============================
+desc "build TNet projec..."
+task :tnet => [:get_latest_tnet] do
+  devenv2019 = "C:/PROGRA~2/MICROS~1/2019/COMMUN~1/Common7/IDE/devenv"
+  sh "#{devenv2019} D:/THC/C0702/TNET/TNET.sln /rebuild \"Release|Any CPU\""
+  puts "copy TNet.dll to release files folder"
+  copy_files('D:/THC/C0702/out/TNet.dll', 'D:/THC/C0702/ReleaseFiles/TNet.dll')
+end
+
+desc "get latest tnet version from svn ..."
+task :get_latest_tnet do |t|
+	t.reenable
+	#sh "svn revert -R D:/THC/C0702/TNet"
+	sh "svn update D:/THC/C0702/TNet"
+end
+
 #=============================TClient config===================================
 desc "build TClient project ..."
 task :tclient => [:get_latest_tclient] do
@@ -1710,7 +1728,7 @@ end
 release_path = "D:/THC/C0702/ReleaseFiles/"
 task :dll do |t|
 	t.reenable
-	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tutilitydotnet.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tmap.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tanalysisdotnet.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll,sfw.dll,wsa.dll,ttd.dll"
+	release_dlls = "craxddrt.dll,craxdrt.dll,crviewer.dll,espedcf.esp,cmosub32.dll,espmodel.dll,adppmdl.dll,flexcell.ocx,log4cxx.dll,jmail.dll,msinet.ocx,unins.exe,TRDSLicense.dll,prepayscore.dll,stsvc.exe,pathfilerules.xml,pathfileheads.xml,pathfile.xla,ConnStringEditorC0702.exe,IRRSvcMonitor.exe,cmo_w32.dll,tutilitydotnet.dll,tzip.dll,trdscrypto.dll,tcnpool.dll,tlogging.dll,tmisc.dll,trdsdata.dll,terrhandler.dll,tmd.dll,taset.dll,tdcalc.dll,tsecurity.dll,trefentity.dll,texchangeratemgr.dll,tstock.dll,toption.dll,tots.dll,tbond.dll,tird.dll,tcyd.dll,tintexcmo.dll,tmarkit.dll,tstruprod.dll,tcdo.dll,toptionderiv.dll,tdbload.dll,tmongodb.dll,tportfolio.dll,ttask.dll,tmap.dll,tpathfileanalyzer.dll,tpathfileparser.dll,tcalc.dll,tpo.dll,trdsirrcalc.dll,trdscall.dll,tuserrole.dll,irrcalc.dll,thcglview.dll,tfiledb.dll,tnetcmd.dll,tactivemq.dll,tclientshell.dll,tanalysis.dll,tanalysisdotnet.dll,tnet.dll,tbusiness.dll,tnetinfo.dll,spda.dll,tcamel.dll,tgroupcalcitemstr.dll,tetldata.dll,oascalibrating.dll,sfw.dll,wsa.dll,ttd.dll"
 	release_dll_arr = release_dlls.split(',')
 	product_Dll_path = "D:/THC/C0702/Products/Dll/"
 	release_dll_arr.each do |dll|
